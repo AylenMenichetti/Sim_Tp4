@@ -9,3 +9,8 @@ C:\Users\PC\Documents\GitHub\Sim_Tp4\Sim_Tp4\TpMontecarlos\Simlib\bin\Debug\Siml
 C:\Users\PC\Documents\GitHub\Sim_Tp4\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.dll
 C:\Users\PC\Documents\GitHub\Sim_Tp4\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.pdb
 C:\Users\PC\Documents\GitHub\Sim_Tp4\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.csprojResolveAssemblyReference.cache
+C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\Simlib\bin\Debug\Simlib.dll
+C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\Simlib\bin\Debug\Simlib.pdb
+C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.csprojResolveAssemblyReference.cache
+C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.dll
+C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.pdb

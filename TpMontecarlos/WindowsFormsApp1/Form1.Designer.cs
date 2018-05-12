@@ -75,6 +75,7 @@
             this.probabilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TpRSimulacion = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblResultado = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_simulacion)).BeginInit();
             this.TcRSimulacion.SuspendLayout();
@@ -90,6 +91,7 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwcantautos)).BeginInit();
             this.TpRSimulacion.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -512,12 +514,22 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblResultado);
             this.groupBox2.Location = new System.Drawing.Point(390, 17);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(593, 56);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Conclusiones";
+            // 
+            // lblResultado
+            // 
+            this.lblResultado.AutoSize = true;
+            this.lblResultado.Location = new System.Drawing.Point(28, 23);
+            this.lblResultado.Name = "lblResultado";
+            this.lblResultado.Size = new System.Drawing.Size(40, 13);
+            this.lblResultado.TabIndex = 0;
+            this.lblResultado.Text = "           ";
             // 
             // Form1
             // 
@@ -547,6 +559,8 @@
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgwcantautos)).EndInit();
             this.TpRSimulacion.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,6 +615,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn tiposAuto;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.Label lblResultado;
     }
 }
 

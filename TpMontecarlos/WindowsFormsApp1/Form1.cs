@@ -80,40 +80,35 @@ namespace AgenciaAutos
 
             if (rad_v1.Checked)
             {
-                Simular1();
+                Simular();
+
             }
 
             else if (rad_v2.Checked)
             {
-                Simular2();
+                Simular();
             }
 
             else if (rad_v3.Checked)
             {
-                Simular3();
+                Simular();
             }
             else if (rad_v4.Checked)
             {
-                Simular4();
+                Simular();
             }
         }
 
 
-        private void Simular1()
+        private void Simular()
         {
-          // dgw_simulacion.DataSource = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text),CantAutosVendidos,TipoAuto,ComisionAL,comisionAM);
-        }
-        private void Simular2()
-        {
+         double acumtotalporvendedor = 0;
+         dgw_simulacion.DataSource = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text),CantAutosVendidos,TipoAuto,ComisionAL,ComisionAM,ref acumtotalporvendedor);
+
+         acumtotalporvendedor = acumtotalporvendedor / 4;
+         lblResultado.Text = "Comisión promedio de los vendedores en una semana: " + acumtotalporvendedor.ToString();
 
         }
-        private void Simular3()
-        {
-
-        }
-        private void Simular4()
-        {
-
-        }
+      
     }
 }
