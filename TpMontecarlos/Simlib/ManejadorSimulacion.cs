@@ -63,7 +63,7 @@ namespace Simlib
                     for (int k = 0; k < int.Parse(vector[2]); k++)
                     {
                         double rndtipoAuto = tipoAuto.GenerarRnd();
-                        string tipoaut = tipoAuto.ObtenerValorAsociado(rndtipoAuto).ToString();
+                        int tipoaut = (int)tipoAuto.ObtenerValorAsociado(rndtipoAuto);
                         double rndcomision = new Random().NextDouble();
                         double comision = buscarcomision(tipoaut,rndcomision, ComisionesAL,ComisionesAM);
 
@@ -100,16 +100,20 @@ namespace Simlib
             return tabla;
         }
 
-        public double buscarcomision(string tipo,double rnd,Distribuciones comisionAL, Distribuciones comisionAM) {
+        public double buscarcomision(int tipo,double rnd,Distribuciones comisionAL, Distribuciones comisionAM) {
             switch (tipo)
             {
-                case "C":
-                    return 250;
-                case "AM":
                 
+                case 1:
+                    //Auto Compacto
+                    return 250;
+               
+                case 2:
+                    //Auto Mediano
                     return comisionAM.ObtenerValorAsociado(rnd);
-                case "AL":
-                   
+               
+                case 3:
+                    //Auto De Lujo
                     return comisionAL.ObtenerValorAsociado(rnd);
                     
                 default:
