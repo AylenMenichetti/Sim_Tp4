@@ -33,3 +33,16 @@ C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\Wi
 C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\AgenciaAutos.csproj.GenerateResource.Cache
 C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\bin\Debug\Simlib.dll
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\bin\Debug\Simlib.pdb
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\AgenciaAutos.csprojResolveAssemblyReference.cache
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\AgenciaAutos.Form1.resources
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\AgenciaAutos.csproj.GenerateResource.cache
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\AgenciaAutos.csproj.CoreCompileInputs.cache
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\AgenciaAutos.csproj.CopyComplete
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

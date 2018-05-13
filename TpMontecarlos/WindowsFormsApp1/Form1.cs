@@ -49,8 +49,8 @@ namespace AgenciaAutos
 
             this.generarProbabilidades(dgwcantautos, ListaCantAutos);
             this.generarProbabilidades(dgwTipoAuto, ListatiposAutos);
-            //this.generarProbabilidades(dgwcomisionAL, ListaComisionAL);
-            //this.generarProbabilidades(dgwcomisionAM, ListaComisionAM);
+            this.generarProbabilidades(dgwcomisionAL, ListaComisionAL);
+            this.generarProbabilidades(dgwcomisionAM, ListaComisionAM);
 
             CantAutosVendidos = new Distribuciones(ListaCantAutos);
             TipoAuto = new Distribuciones(ListatiposAutos);
@@ -107,24 +107,31 @@ namespace AgenciaAutos
 
             dgwTipoAuto.Columns.Add("cantidad", "Cantidad");
             dgwTipoAuto.Columns.Add("probabilidad", "Probabilidad");
+            dgwTipoAuto.Columns.Add("index", "Index");
+            dgwTipoAuto.Columns[2].Visible = false;
 
-            dgwTipoAuto.Rows.Add("Compacto(C)", null);
+            dgwTipoAuto.Rows.Add("Compacto(C)", null, 1);
             dgwTipoAuto.Rows[0].Cells[0].ReadOnly = true;
 
-            dgwTipoAuto.Rows.Add("Auto Mediano (AM)", null);
+            dgwTipoAuto.Rows.Add("Auto Mediano (AM)", null, 2);
             dgwTipoAuto.Rows[1].Cells[0].ReadOnly = true;
 
-            dgwTipoAuto.Rows.Add("Auto de Lujo(AL)", null);
+            dgwTipoAuto.Rows.Add("Auto de Lujo(AL)", null, 3);
             dgwTipoAuto.Rows[2].Cells[0].ReadOnly = true;
 
         }
         private List<Probabilidades> generarProbabilidades(DataGridView dt, List<Probabilidades> probabilidades)
         {
             Probabilidades pr;
-
+            var nombre = dt.Name;
+            var c = 0;
+            if (nombre.Equals("dgwTipoAuto"))
+            {
+                c = 2;
+            }
             for (int i = 0; i < dt.RowCount - 1; i++)
             {
-                var z = dt.Rows[i].Cells[0].Value.ToString();
+                var z = dt.Rows[i].Cells[c].Value.ToString();
                 var b = dt.Rows[i].Cells[1].Value.ToString();
                 pr = new Probabilidades(int.Parse(z), double.Parse(b));
 
@@ -134,5 +141,9 @@ namespace AgenciaAutos
             return probabilidades;
         }
 
+        private void VerificarProbComisionAutosMedianos(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("Hola VerificarProbComisionAutosMedianos Autos Medianos");
+        }
     }
 }

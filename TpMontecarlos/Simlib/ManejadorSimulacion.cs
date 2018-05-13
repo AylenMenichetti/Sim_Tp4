@@ -19,15 +19,15 @@ namespace Simlib
         {
             DataTable tabla = new DataTable(); //Tabla que será devuelta
             tabla.Columns.Add("Semana Numero:");
-            tabla.Columns.Add("RND");
+            tabla.Columns.Add("RND Cant Autos");
             tabla.Columns.Add("Cantidad Autos");
-            tabla.Columns.Add("RND");
+            tabla.Columns.Add("RND Tipo Auto");
             tabla.Columns.Add("Tipo Auto");
-            tabla.Columns.Add("RND");
+            tabla.Columns.Add("RND Comision");
             tabla.Columns.Add("Comision");
             tabla.Columns.Add("Comision Total");
             tabla.Columns.Add("Comision Acumulada");
-            tabla.Columns.Add("Comision Acumulada");
+            tabla.Columns.Add("Vendedor");
 
             int totalDias = 0;
             long limite = filasMostrar; //Límite por encima del cual debo empezar a almacenar en la tabla (cant. de renglones)

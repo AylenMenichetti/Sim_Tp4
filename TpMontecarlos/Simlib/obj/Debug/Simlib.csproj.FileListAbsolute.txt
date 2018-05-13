@@ -14,3 +14,9 @@ C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\Simlib\bin\Debug\Simlib.pdb
 C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.csprojResolveAssemblyReference.cache
 C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.dll
 C:\Users\PC\Documents\GitHub\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.pdb
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\Simlib\bin\Debug\Simlib.dll
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\Simlib\bin\Debug\Simlib.pdb
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.csprojResolveAssemblyReference.cache
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.csproj.CoreCompileInputs.cache
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.dll
+E:\Facultad\2018\Simulacion\Sim_Tp4\TpMontecarlos\Simlib\obj\Debug\Simlib.pdb
