@@ -7,12 +7,12 @@ namespace Simlib.Tabla_Probabilidades
 {
     public class Distribuciones
     {
-        public IList<Probabilidades> Valores { get; set; }
-        public IList<double> intervaloHasta { get; set; }
+        public List<Probabilidades> Valores { get; set; }
+        public List<double> intervaloHasta { get; set; }
 
-        public Distribuciones(IList<Probabilidades> probabilidadAsociada)
+        public Distribuciones(List<Probabilidades> Valores)
         {
-            Valores = Valores ?? new List<Probabilidades>();
+            this.Valores = Valores ?? new List<Probabilidades>();
 
             GenerarTabla();
         }

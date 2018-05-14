@@ -29,34 +29,29 @@ namespace Simlib
             tabla.Columns.Add("Comision Acumulada");
             tabla.Columns.Add("Vendedor");
 
-            int totalDias = 0;
-            long limite = filasMostrar; //Límite por encima del cual debo empezar a almacenar en la tabla (cant. de renglones)
-            
-            
-            //Intervalos intervalos = new Intervalos(); //Clase que me clasifica por intervalo y me devuelve el valor de la demanda o si pasa el inspector.
-            //int totalDias = 0;
+            var mostrarHasta = mostrarDesde + filasMostrar;
 
-            //Random r = new Random();
-            String[] vector = new String[9];
+            
           
-            for (int i = 0; i <= 4; i++) //Un bucle por vendedor
+            for (int i = 0; i < 4; i++) //Un bucle por vendedor
             {
-               long vendedor = i + 1;
 
+                String[] vector = new String[10];
+                long vendedor = i + 1;
 
-                for (int j = 0; j < CantSemanas; j++)//bucle por semana
+                var semanaActual = 0;
+                for (int j = 1; j < CantSemanas; j++)//bucle por semana
 
                 {
-
-
             //        Campos en común------------------------------ -
                    vector[0] = j.ToString();
                                       
                    double rndCantAuto = cantautos.GenerarRnd();
                    vector[1] = rndCantAuto.ToString();
                    vector[2] = cantautos.ObtenerValorAsociado(rndCantAuto).ToString();
-                   String rndtipoAutoTexto = "";
+                   //String rndtipoAutoTexto = "";
                    String rndComisionTexto = "";
+                    StringBuilder rndtipoAutoTexto = new StringBuilder();
                     String tipoAutoTexto = "";
                    String comisionTexto = "";
                    double ComisionTotal = 0;
@@ -67,30 +62,33 @@ namespace Simlib
                         double rndcomision = new Random().NextDouble();
                         double comision = buscarcomision(tipoaut,rndcomision, ComisionesAL,ComisionesAM);
 
-                        rndtipoAutoTexto += rndtipoAuto.ToString() + "\n";
-                        tipoAutoTexto += tipoaut + "\n";
-                        rndComisionTexto += rndcomision + "\n";
-                        comisionTexto += comision + "\n";
+                        //rndtipoAutoTexto += rndtipoAuto.ToString() + Environment.NewLine;
+                        rndtipoAutoTexto.Append(rndtipoAuto).AppendLine();
+                        tipoAutoTexto += tipoaut + Environment.NewLine;
+                        rndComisionTexto += rndcomision + Environment.NewLine;
+                        comisionTexto += comision + Environment.NewLine;
 
                         ComisionTotal = ComisionTotal + comision;
                     }
 
-                    vector[3] = rndtipoAutoTexto;
+                    vector[3] = rndtipoAutoTexto.ToString();
                     vector[4] = tipoAutoTexto;
                     vector[5] = rndComisionTexto;
                     vector[6] = comisionTexto;
                     vector[7] = ComisionTotal.ToString();
-                    vector[8] = vector[7] +ComisionTotal.ToString();
+                    vector[8] = string.IsNullOrEmpty(vector[8]) ? vector[7] : (double.Parse(vector[8]) + double.Parse(vector[7])).ToString();
                     vector[9] = vendedor.ToString();
-                    totalDias++;
-                }
-                if (totalDias >= mostrarDesde && totalDias <= mostrarDesde + filasMostrar )
-                    tabla.LoadDataRow(vector, true);
 
-                if (totalDias == CantSemanas)
-                {   tabla.LoadDataRow(vector, true);
-                    acumtotalvendedor += double.Parse(vector[8]);
+                    if (j > mostrarDesde && j <= mostrarHasta)
+                        tabla.LoadDataRow(vector, true);
                 }
+
+
+                //if (CantSemanas == CantSemanas)
+                //{   tabla.LoadDataRow(vector, true);
+                tabla.LoadDataRow(vector, true);
+                acumtotalvendedor += double.Parse(vector[8]);
+                //}
 
 
 

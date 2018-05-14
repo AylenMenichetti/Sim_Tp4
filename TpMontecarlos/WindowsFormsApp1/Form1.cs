@@ -29,14 +29,33 @@ namespace AgenciaAutos
         public Form1()
         {
             InitializeComponent();
-            
+
 
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.cargarTablasTipoAuto();
-            this.cargarTablasCantAutos();
+
+            this.txtComisionAC.Text = "250";
+            this.txt_cantMostrar.Text = "2";
+            this.txt_cantSemanas.Text = "5";
+            this.txt_mostrarDesde.Text = "1";
+
+            dgwcomisionAM.Rows.Add(500, 50);
+            dgwcomisionAM.Rows.Add(750, 50);
+
+            dgwcomisionAL.Rows.Add(1500, 50);
+            dgwcomisionAL.Rows.Add(2500, 50);
+
+            dgwTipoAuto.Rows.Add("Compacto(C)", 50, 1);
+            dgwTipoAuto.Rows.Add("Auto Mediano (AM)", 30, 2);
+            dgwTipoAuto.Rows.Add("Auto de Lujo(AL)", 20, 3);
+
+            dgwcantautos.Rows.Add(0, 10);
+            dgwcantautos.Rows.Add(1, 25);
+            dgwcantautos.Rows.Add(2, 15);
+            dgwcantautos.Rows.Add(3, 30);
+            dgwcantautos.Rows.Add(4, 20);
         }
 
         private void btn_simular_Click(object sender, EventArgs e)
@@ -57,8 +76,12 @@ namespace AgenciaAutos
             ComisionAL = new Distribuciones(ListaComisionAL);
             ComisionAM = new Distribuciones(ListaComisionAM);
 
+            if (rad_VerTodos.Checked)
+            {
+                Simular();
+            }
 
-            if (rad_v1.Checked)
+            else if (rad_v1.Checked)
             {
                 Simular();
             }
@@ -81,45 +104,15 @@ namespace AgenciaAutos
 
         private void Simular()
         {
-         double acumtotalporvendedor = 0;
-         dgw_simulacion.DataSource = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text),CantAutosVendidos,TipoAuto,ComisionAL,ComisionAM,ref acumtotalporvendedor);
+            double acumtotalporvendedor = 0;
+            dgw_simulacion.DataSource = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM, ref acumtotalporvendedor);
 
-         acumtotalporvendedor = acumtotalporvendedor / 4;
-         lblResultado.Text = "Comisión promedio de los vendedores en una semana: " + acumtotalporvendedor.ToString();
+            acumtotalporvendedor = acumtotalporvendedor / 4;
+            lblResultado.Text = "Comisión promedio de los vendedores en una semana: " + acumtotalporvendedor.ToString();
 
-        }
-        private void cargarTablasCantAutos()
-        {
-
-            dgwcantautos.Columns.Add("cantidad", "Cantidad");
-            dgwcantautos.Columns.Add("probabilidad", "Probabilidad");
-
-            for (int i = 0; i < 5; i++)
-            {
-                dgwcantautos.Rows.Add(i, null);
-                dgwcantautos.Rows[i].Cells[0].ReadOnly = true;
-            }
-
+            TcRSimulacion.SelectTab(TpRSimulacion);
         }
 
-        private void cargarTablasTipoAuto()
-        {
-
-            dgwTipoAuto.Columns.Add("cantidad", "Cantidad");
-            dgwTipoAuto.Columns.Add("probabilidad", "Probabilidad");
-            dgwTipoAuto.Columns.Add("index", "Index");
-            dgwTipoAuto.Columns[2].Visible = false;
-
-            dgwTipoAuto.Rows.Add("Compacto(C)", null, 1);
-            dgwTipoAuto.Rows[0].Cells[0].ReadOnly = true;
-
-            dgwTipoAuto.Rows.Add("Auto Mediano (AM)", null, 2);
-            dgwTipoAuto.Rows[1].Cells[0].ReadOnly = true;
-
-            dgwTipoAuto.Rows.Add("Auto de Lujo(AL)", null, 3);
-            dgwTipoAuto.Rows[2].Cells[0].ReadOnly = true;
-
-        }
         private List<Probabilidades> generarProbabilidades(DataGridView dt, List<Probabilidades> probabilidades)
         {
             Probabilidades pr;
@@ -133,7 +126,7 @@ namespace AgenciaAutos
             {
                 var z = dt.Rows[i].Cells[c].Value.ToString();
                 var b = dt.Rows[i].Cells[1].Value.ToString();
-                pr = new Probabilidades(int.Parse(z), double.Parse(b));
+                pr = new Probabilidades(int.Parse(z), (double.Parse(b) / 100));
 
                 probabilidades.Add(pr);
             }
@@ -143,7 +136,12 @@ namespace AgenciaAutos
 
         private void VerificarProbComisionAutosMedianos(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("Hola VerificarProbComisionAutosMedianos Autos Medianos");
+            //MessageBox.Show("Hola VerificarProbComisionAutosMedianos Autos Medianos");
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

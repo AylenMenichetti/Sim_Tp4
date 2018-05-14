@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,15 +48,6 @@
             this.txtComisionAC = new System.Windows.Forms.TextBox();
             this.btn_simular = new System.Windows.Forms.Button();
             this.dgw_simulacion = new System.Windows.Forms.DataGridView();
-            this.dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rndcantau = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantAut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rndtipoAut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoauto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RNDcomision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ComTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comacum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TcRSimulacion = new System.Windows.Forms.TabControl();
             this.TpParametros = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -61,8 +58,6 @@
             this.dgwcomisionAM = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgwcomisionAL = new System.Windows.Forms.DataGridView();
-            this.comisonAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dgwTipoAuto = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -70,8 +65,16 @@
             this.TpRSimulacion = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblResultado = new System.Windows.Forms.Label();
+            this.rad_VerTodos = new System.Windows.Forms.RadioButton();
+            this.tipoAutoTexto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.probAV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipoAutoNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comisionM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.probabilidadAm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.prob = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comisonAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_simulacion)).BeginInit();
             this.TcRSimulacion.SuspendLayout();
@@ -132,27 +135,26 @@
             // rad_v1
             // 
             this.rad_v1.AutoSize = true;
-            this.rad_v1.Checked = true;
-            this.rad_v1.Location = new System.Drawing.Point(8, 23);
-            this.rad_v1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rad_v1.Location = new System.Drawing.Point(193, 28);
+            this.rad_v1.Margin = new System.Windows.Forms.Padding(4);
             this.rad_v1.Name = "rad_v1";
             this.rad_v1.Size = new System.Drawing.Size(103, 21);
-            this.rad_v1.TabIndex = 5;
-            this.rad_v1.TabStop = true;
+            this.rad_v1.TabIndex = 14;
             this.rad_v1.Text = "Vendedor 1";
             this.rad_v1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rad_VerTodos);
             this.groupBox1.Controls.Add(this.rad_v4);
             this.groupBox1.Controls.Add(this.rad_v3);
             this.groupBox1.Controls.Add(this.rad_v2);
             this.groupBox1.Controls.Add(this.rad_v1);
             this.groupBox1.Location = new System.Drawing.Point(27, 21);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(485, 69);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(674, 69);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vendedores";
@@ -160,68 +162,71 @@
             // rad_v4
             // 
             this.rad_v4.AutoSize = true;
-            this.rad_v4.Location = new System.Drawing.Point(357, 23);
-            this.rad_v4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rad_v4.Location = new System.Drawing.Point(542, 28);
+            this.rad_v4.Margin = new System.Windows.Forms.Padding(4);
             this.rad_v4.Name = "rad_v4";
             this.rad_v4.Size = new System.Drawing.Size(103, 21);
-            this.rad_v4.TabIndex = 8;
+            this.rad_v4.TabIndex = 17;
             this.rad_v4.Text = "Vendedor 4";
             this.rad_v4.UseVisualStyleBackColor = true;
             // 
             // rad_v3
             // 
             this.rad_v3.AutoSize = true;
-            this.rad_v3.Location = new System.Drawing.Point(229, 23);
-            this.rad_v3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rad_v3.Location = new System.Drawing.Point(414, 28);
+            this.rad_v3.Margin = new System.Windows.Forms.Padding(4);
             this.rad_v3.Name = "rad_v3";
             this.rad_v3.Size = new System.Drawing.Size(103, 21);
-            this.rad_v3.TabIndex = 7;
+            this.rad_v3.TabIndex = 16;
             this.rad_v3.Text = "Vendedor 3";
             this.rad_v3.UseVisualStyleBackColor = true;
             // 
             // rad_v2
             // 
             this.rad_v2.AutoSize = true;
-            this.rad_v2.Location = new System.Drawing.Point(119, 23);
-            this.rad_v2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rad_v2.Location = new System.Drawing.Point(304, 28);
+            this.rad_v2.Margin = new System.Windows.Forms.Padding(4);
             this.rad_v2.Name = "rad_v2";
             this.rad_v2.Size = new System.Drawing.Size(103, 21);
-            this.rad_v2.TabIndex = 6;
+            this.rad_v2.TabIndex = 15;
             this.rad_v2.Text = "Vendedor 2";
             this.rad_v2.UseVisualStyleBackColor = true;
             // 
             // txt_cantSemanas
             // 
             this.txt_cantSemanas.Location = new System.Drawing.Point(173, 44);
-            this.txt_cantSemanas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_cantSemanas.Margin = new System.Windows.Forms.Padding(4);
             this.txt_cantSemanas.Name = "txt_cantSemanas";
             this.txt_cantSemanas.Size = new System.Drawing.Size(68, 22);
-            this.txt_cantSemanas.TabIndex = 7;
+            this.txt_cantSemanas.TabIndex = 5;
+            this.txt_cantSemanas.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txt_mostrarDesde
             // 
             this.txt_mostrarDesde.Location = new System.Drawing.Point(173, 82);
-            this.txt_mostrarDesde.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_mostrarDesde.Margin = new System.Windows.Forms.Padding(4);
             this.txt_mostrarDesde.Name = "txt_mostrarDesde";
             this.txt_mostrarDesde.Size = new System.Drawing.Size(68, 22);
-            this.txt_mostrarDesde.TabIndex = 8;
+            this.txt_mostrarDesde.TabIndex = 6;
+            this.txt_mostrarDesde.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtComisionAC
             // 
             this.txtComisionAC.Location = new System.Drawing.Point(140, 495);
-            this.txtComisionAC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtComisionAC.Margin = new System.Windows.Forms.Padding(4);
             this.txtComisionAC.Name = "txtComisionAC";
             this.txtComisionAC.Size = new System.Drawing.Size(132, 22);
-            this.txtComisionAC.TabIndex = 9;
+            this.txtComisionAC.TabIndex = 4;
+            this.txtComisionAC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btn_simular
             // 
             this.btn_simular.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.btn_simular.Location = new System.Drawing.Point(949, 235);
-            this.btn_simular.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_simular.Margin = new System.Windows.Forms.Padding(4);
             this.btn_simular.Name = "btn_simular";
             this.btn_simular.Size = new System.Drawing.Size(184, 74);
-            this.btn_simular.TabIndex = 10;
+            this.btn_simular.TabIndex = 8;
             this.btn_simular.Text = "SIMULAR";
             this.btn_simular.UseVisualStyleBackColor = false;
             this.btn_simular.Click += new System.EventHandler(this.btn_simular_Click);
@@ -229,66 +234,11 @@
             // dgw_simulacion
             // 
             this.dgw_simulacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgw_simulacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dia,
-            this.rndcantau,
-            this.cantAut,
-            this.rndtipoAut,
-            this.tipoauto,
-            this.RNDcomision,
-            this.comision,
-            this.ComTotal,
-            this.comacum});
-            this.dgw_simulacion.Location = new System.Drawing.Point(27, 102);
-            this.dgw_simulacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgw_simulacion.Location = new System.Drawing.Point(27, 103);
+            this.dgw_simulacion.Margin = new System.Windows.Forms.Padding(4);
             this.dgw_simulacion.Name = "dgw_simulacion";
-            this.dgw_simulacion.Size = new System.Drawing.Size(1284, 466);
+            this.dgw_simulacion.Size = new System.Drawing.Size(1407, 466);
             this.dgw_simulacion.TabIndex = 11;
-            // 
-            // dia
-            // 
-            this.dia.HeaderText = "Día";
-            this.dia.Name = "dia";
-            // 
-            // rndcantau
-            // 
-            this.rndcantau.HeaderText = "RND";
-            this.rndcantau.Name = "rndcantau";
-            // 
-            // cantAut
-            // 
-            this.cantAut.HeaderText = "Cant. Autos Vendidos";
-            this.cantAut.Name = "cantAut";
-            // 
-            // rndtipoAut
-            // 
-            this.rndtipoAut.HeaderText = "RND";
-            this.rndtipoAut.Name = "rndtipoAut";
-            // 
-            // tipoauto
-            // 
-            this.tipoauto.HeaderText = "Tipo Auto";
-            this.tipoauto.Name = "tipoauto";
-            // 
-            // RNDcomision
-            // 
-            this.RNDcomision.HeaderText = "RND";
-            this.RNDcomision.Name = "RNDcomision";
-            // 
-            // comision
-            // 
-            this.comision.HeaderText = "comision";
-            this.comision.Name = "comision";
-            // 
-            // ComTotal
-            // 
-            this.ComTotal.HeaderText = "Comision Total";
-            this.ComTotal.Name = "ComTotal";
-            // 
-            // comacum
-            // 
-            this.comacum.HeaderText = "Comision Acumulada";
-            this.comacum.Name = "comacum";
             // 
             // TcRSimulacion
             // 
@@ -298,7 +248,7 @@
             this.TcRSimulacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TcRSimulacion.Name = "TcRSimulacion";
             this.TcRSimulacion.SelectedIndex = 0;
-            this.TcRSimulacion.Size = new System.Drawing.Size(1325, 604);
+            this.TcRSimulacion.Size = new System.Drawing.Size(1466, 619);
             this.TcRSimulacion.TabIndex = 12;
             // 
             // TpParametros
@@ -314,7 +264,7 @@
             this.TpParametros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TpParametros.Name = "TpParametros";
             this.TpParametros.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TpParametros.Size = new System.Drawing.Size(1317, 575);
+            this.TpParametros.Size = new System.Drawing.Size(1458, 590);
             this.TpParametros.TabIndex = 0;
             this.TpParametros.Text = "Parametros";
             // 
@@ -348,10 +298,11 @@
             // txt_cantMostrar
             // 
             this.txt_cantMostrar.Location = new System.Drawing.Point(173, 119);
-            this.txt_cantMostrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_cantMostrar.Margin = new System.Windows.Forms.Padding(4);
             this.txt_cantMostrar.Name = "txt_cantMostrar";
             this.txt_cantMostrar.Size = new System.Drawing.Size(69, 22);
-            this.txt_cantMostrar.TabIndex = 10;
+            this.txt_cantMostrar.TabIndex = 7;
+            this.txt_cantMostrar.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox7
             // 
@@ -391,7 +342,7 @@
             this.dgwcomisionAM.Name = "dgwcomisionAM";
             this.dgwcomisionAM.RowTemplate.Height = 24;
             this.dgwcomisionAM.Size = new System.Drawing.Size(351, 150);
-            this.dgwcomisionAM.TabIndex = 0;
+            this.dgwcomisionAM.TabIndex = 2;
             this.dgwcomisionAM.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.VerificarProbComisionAutosMedianos);
             // 
             // groupBox4
@@ -417,17 +368,7 @@
             this.dgwcomisionAL.Name = "dgwcomisionAL";
             this.dgwcomisionAL.RowTemplate.Height = 24;
             this.dgwcomisionAL.Size = new System.Drawing.Size(351, 150);
-            this.dgwcomisionAL.TabIndex = 0;
-            // 
-            // comisonAL
-            // 
-            this.comisonAL.HeaderText = "Comisión";
-            this.comisonAL.Name = "comisonAL";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Probabilidad";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dgwcomisionAL.TabIndex = 3;
             // 
             // groupBox6
             // 
@@ -443,13 +384,18 @@
             // 
             // dgwTipoAuto
             // 
+            this.dgwTipoAuto.AllowUserToAddRows = false;
             this.dgwTipoAuto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwTipoAuto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tipoAutoTexto,
+            this.probAV,
+            this.tipoAutoNumber});
             this.dgwTipoAuto.Location = new System.Drawing.Point(19, 39);
             this.dgwTipoAuto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgwTipoAuto.Name = "dgwTipoAuto";
             this.dgwTipoAuto.RowTemplate.Height = 24;
             this.dgwTipoAuto.Size = new System.Drawing.Size(357, 150);
-            this.dgwTipoAuto.TabIndex = 0;
+            this.dgwTipoAuto.TabIndex = 1;
             // 
             // groupBox3
             // 
@@ -465,7 +411,11 @@
             // 
             // dgwcantautos
             // 
+            this.dgwcantautos.AllowUserToAddRows = false;
             this.dgwcantautos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwcantautos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cant,
+            this.prob});
             this.dgwcantautos.Location = new System.Drawing.Point(19, 39);
             this.dgwcantautos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgwcantautos.Name = "dgwcantautos";
@@ -483,21 +433,22 @@
             this.TpRSimulacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TpRSimulacion.Name = "TpRSimulacion";
             this.TpRSimulacion.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.TpRSimulacion.Size = new System.Drawing.Size(1317, 575);
+            this.TpRSimulacion.Size = new System.Drawing.Size(1458, 590);
             this.TpRSimulacion.TabIndex = 1;
             this.TpRSimulacion.Text = "Resultado Simulacion";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lblResultado);
-            this.groupBox2.Location = new System.Drawing.Point(520, 21);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Location = new System.Drawing.Point(709, 21);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox2.Size = new System.Drawing.Size(791, 69);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(725, 69);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Conclusiones";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lblResultado
             // 
@@ -509,25 +460,103 @@
             this.lblResultado.TabIndex = 0;
             this.lblResultado.Text = "           ";
             // 
+            // rad_VerTodos
+            // 
+            this.rad_VerTodos.AutoSize = true;
+            this.rad_VerTodos.Checked = true;
+            this.rad_VerTodos.Location = new System.Drawing.Point(71, 28);
+            this.rad_VerTodos.Margin = new System.Windows.Forms.Padding(4);
+            this.rad_VerTodos.Name = "rad_VerTodos";
+            this.rad_VerTodos.Size = new System.Drawing.Size(95, 21);
+            this.rad_VerTodos.TabIndex = 13;
+            this.rad_VerTodos.TabStop = true;
+            this.rad_VerTodos.Text = "Ver Todos";
+            this.rad_VerTodos.UseVisualStyleBackColor = true;
+            // 
+            // tipoAutoTexto
+            // 
+            this.tipoAutoTexto.HeaderText = "Tipo Auto";
+            this.tipoAutoTexto.Name = "tipoAutoTexto";
+            this.tipoAutoTexto.ReadOnly = true;
+            // 
+            // probAV
+            // 
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N0";
+            dataGridViewCellStyle13.NullValue = null;
+            this.probAV.DefaultCellStyle = dataGridViewCellStyle13;
+            this.probAV.HeaderText = "Probabilidad";
+            this.probAV.Name = "probAV";
+            this.probAV.ReadOnly = true;
+            // 
+            // tipoAutoNumber
+            // 
+            this.tipoAutoNumber.HeaderText = "tipoAutoN";
+            this.tipoAutoNumber.Name = "tipoAutoNumber";
+            this.tipoAutoNumber.ReadOnly = true;
+            this.tipoAutoNumber.Visible = false;
+            // 
             // comisionM
             // 
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.NullValue = null;
+            this.comisionM.DefaultCellStyle = dataGridViewCellStyle14;
             this.comisionM.HeaderText = "Comision";
             this.comisionM.Name = "comisionM";
             // 
             // probabilidadAm
             // 
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N0";
+            dataGridViewCellStyle15.NullValue = null;
+            this.probabilidadAm.DefaultCellStyle = dataGridViewCellStyle15;
             this.probabilidadAm.HeaderText = "Probabilidad";
             this.probabilidadAm.Name = "probabilidadAm";
+            // 
+            // cant
+            // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = null;
+            this.cant.DefaultCellStyle = dataGridViewCellStyle16;
+            this.cant.HeaderText = "Cantidad";
+            this.cant.Name = "cant";
+            this.cant.ReadOnly = true;
+            // 
+            // prob
+            // 
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N0";
+            dataGridViewCellStyle17.NullValue = null;
+            this.prob.DefaultCellStyle = dataGridViewCellStyle17;
+            this.prob.HeaderText = "Probabilidad";
+            this.prob.Name = "prob";
+            // 
+            // comisonAL
+            // 
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.Format = "N2";
+            dataGridViewCellStyle18.NullValue = null;
+            this.comisonAL.DefaultCellStyle = dataGridViewCellStyle18;
+            this.comisonAL.HeaderText = "Comisión";
+            this.comisonAL.Name = "comisonAL";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Probabilidad";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1359, 642);
+            this.ClientSize = new System.Drawing.Size(1694, 642);
             this.Controls.Add(this.TcRSimulacion);
             this.Controls.Add(this.label5);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -571,15 +600,6 @@
         private System.Windows.Forms.TextBox txtComisionAC;
         private System.Windows.Forms.Button btn_simular;
         private System.Windows.Forms.DataGridView dgw_simulacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rndcantau;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantAut;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rndtipoAut;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoauto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RNDcomision;
-        private System.Windows.Forms.DataGridViewTextBoxColumn comision;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ComTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn comacum;
         private System.Windows.Forms.TabControl TcRSimulacion;
         private System.Windows.Forms.TabPage TpParametros;
         private System.Windows.Forms.TabPage TpRSimulacion;
@@ -596,11 +616,17 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_cantMostrar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn comisonAL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label lblResultado;
+        private System.Windows.Forms.RadioButton rad_VerTodos;
         private System.Windows.Forms.DataGridViewTextBoxColumn comisionM;
         private System.Windows.Forms.DataGridViewTextBoxColumn probabilidadAm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoAutoTexto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn probAV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoAutoNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn comisonAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn prob;
     }
 }
 
