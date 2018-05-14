@@ -82,7 +82,7 @@ namespace AgenciaAutos
 
 
             Simular();
-            dgw_simulacion.Columns[9].Visible = false;
+            //dgw_simulacion.Columns[9].Visible = false;
 
         }
 
