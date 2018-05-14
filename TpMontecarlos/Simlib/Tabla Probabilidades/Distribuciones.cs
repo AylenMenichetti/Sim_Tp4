@@ -17,17 +17,17 @@ namespace Simlib.Tabla_Probabilidades
             GenerarTabla();
         }
         //genera rnd
-        public double GenerarRnd()
+        public double GenerarRnd(Random rnd)
         {
-            double rnd = new Random().NextDouble();
-            
-            return rnd;
+            var random = rnd.NextDouble();
+            random=Math.Truncate(random*100);
+            return random;
         }
 
         //apartir del rnd, devuelve el valor asociado
         public double ObtenerValorAsociado(double rnd)
         {
-
+            
             for (var i = 1; i < intervaloHasta.Count; i++)
             {
                 if (rnd < intervaloHasta[i])

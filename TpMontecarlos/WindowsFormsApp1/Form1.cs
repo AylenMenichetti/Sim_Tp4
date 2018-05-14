@@ -36,26 +36,28 @@ namespace AgenciaAutos
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            this.txtComisionAC.Text = "250";
-            this.txt_cantMostrar.Text = "2";
-            this.txt_cantSemanas.Text = "5";
-            this.txt_mostrarDesde.Text = "1";
+            dgwcantautos.Rows.Add(0, 20);
+            dgwcantautos.Rows.Add(1, 30);
+            dgwcantautos.Rows.Add(2, 30);
+            dgwcantautos.Rows.Add(3, 15);
+            dgwcantautos.Rows.Add(4, 5);
 
-            dgwcomisionAM.Rows.Add(500, 50);
-            dgwcomisionAM.Rows.Add(750, 50);
+            dgwcomisionAM.Rows.Add(400, 40);
+            dgwcomisionAM.Rows.Add(500, 60);
 
-            dgwcomisionAL.Rows.Add(1500, 50);
-            dgwcomisionAL.Rows.Add(2500, 50);
+            dgwcomisionAL.Rows.Add(1000, 35);
+            dgwcomisionAL.Rows.Add(1500, 40);
+            dgwcomisionAL.Rows.Add(2000, 25);
 
             dgwTipoAuto.Rows.Add("Compacto(C)", 50, 1);
-            dgwTipoAuto.Rows.Add("Auto Mediano (AM)", 30, 2);
-            dgwTipoAuto.Rows.Add("Auto de Lujo(AL)", 20, 3);
+            dgwTipoAuto.Rows.Add("Auto Mediano (AM)", 35, 2);
+            dgwTipoAuto.Rows.Add("Auto de Lujo(AL)", 15, 3);
 
-            dgwcantautos.Rows.Add(0, 10);
-            dgwcantautos.Rows.Add(1, 25);
-            dgwcantautos.Rows.Add(2, 15);
-            dgwcantautos.Rows.Add(3, 30);
-            dgwcantautos.Rows.Add(4, 20);
+            this.txtComisionAC.Text = "250";
+            this.txt_cantMostrar.Text = "50";
+            this.txt_cantSemanas.Text = "1000";
+            this.txt_mostrarDesde.Text = "1";
+
         }
 
         private void btn_simular_Click(object sender, EventArgs e)
@@ -105,8 +107,13 @@ namespace AgenciaAutos
         private void Simular()
         {
             double acumtotalporvendedor = 0;
-            dgw_simulacion.DataSource = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM, ref acumtotalporvendedor);
 
+            dgw_simulacion.DataSource = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM, ref acumtotalporvendedor);
+            dgw_simulacion.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.Columns[4].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.Columns[5].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.Columns[6].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             acumtotalporvendedor = acumtotalporvendedor / 4;
             lblResultado.Text = "Comisión promedio de los vendedores en una semana: " + acumtotalporvendedor.ToString();
 
@@ -126,7 +133,7 @@ namespace AgenciaAutos
             {
                 var z = dt.Rows[i].Cells[c].Value.ToString();
                 var b = dt.Rows[i].Cells[1].Value.ToString();
-                pr = new Probabilidades(int.Parse(z), (double.Parse(b) / 100));
+                pr = new Probabilidades(int.Parse(z), (double.Parse(b)));
 
                 probabilidades.Add(pr);
             }
