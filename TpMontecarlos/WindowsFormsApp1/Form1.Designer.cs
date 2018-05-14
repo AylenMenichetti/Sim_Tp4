@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle93 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle94 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle95 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle96 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,8 +74,8 @@
             this.prob = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TpRSimulacion = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblResultado = new System.Windows.Forms.Label();
             this.lblpromparcial = new System.Windows.Forms.Label();
+            this.lblResultado = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_simulacion)).BeginInit();
             this.TcRSimulacion.SuspendLayout();
@@ -251,7 +251,7 @@
             this.TcRSimulacion.Controls.Add(this.TpParametros);
             this.TcRSimulacion.Controls.Add(this.TpRSimulacion);
             this.TcRSimulacion.Location = new System.Drawing.Point(16, 10);
-            this.TcRSimulacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TcRSimulacion.Margin = new System.Windows.Forms.Padding(2);
             this.TcRSimulacion.Name = "TcRSimulacion";
             this.TcRSimulacion.SelectedIndex = 0;
             this.TcRSimulacion.Size = new System.Drawing.Size(1117, 503);
@@ -267,9 +267,9 @@
             this.TpParametros.Controls.Add(this.groupBox3);
             this.TpParametros.Controls.Add(this.btn_simular);
             this.TpParametros.Location = new System.Drawing.Point(4, 22);
-            this.TpParametros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TpParametros.Margin = new System.Windows.Forms.Padding(2);
             this.TpParametros.Name = "TpParametros";
-            this.TpParametros.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TpParametros.Padding = new System.Windows.Forms.Padding(2);
             this.TpParametros.Size = new System.Drawing.Size(1109, 477);
             this.TpParametros.TabIndex = 0;
             this.TpParametros.Text = "Parametros";
@@ -283,9 +283,9 @@
             this.groupBox8.Controls.Add(this.txt_cantSemanas);
             this.groupBox8.Controls.Add(this.txt_mostrarDesde);
             this.groupBox8.Location = new System.Drawing.Point(650, 21);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox8.Size = new System.Drawing.Size(218, 141);
             this.groupBox8.TabIndex = 14;
             this.groupBox8.TabStop = false;
@@ -315,9 +315,9 @@
             this.groupBox7.Controls.Add(this.txtComisionAC);
             this.groupBox7.Controls.Add(this.label3);
             this.groupBox7.Location = new System.Drawing.Point(338, 5);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox7.Size = new System.Drawing.Size(308, 447);
             this.groupBox7.TabIndex = 13;
             this.groupBox7.TabStop = false;
@@ -327,9 +327,9 @@
             // 
             this.groupBox5.Controls.Add(this.dgwcomisionAM);
             this.groupBox5.Location = new System.Drawing.Point(15, 16);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox5.Size = new System.Drawing.Size(292, 165);
             this.groupBox5.TabIndex = 12;
             this.groupBox5.TabStop = false;
@@ -342,7 +342,7 @@
             this.comisionM,
             this.probabilidadAm});
             this.dgwcomisionAM.Location = new System.Drawing.Point(14, 32);
-            this.dgwcomisionAM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgwcomisionAM.Margin = new System.Windows.Forms.Padding(2);
             this.dgwcomisionAM.Name = "dgwcomisionAM";
             this.dgwcomisionAM.RowTemplate.Height = 24;
             this.dgwcomisionAM.Size = new System.Drawing.Size(263, 122);
@@ -351,18 +351,18 @@
             // 
             // comisionM
             // 
-            dataGridViewCellStyle91.Format = "N2";
-            dataGridViewCellStyle91.NullValue = null;
-            this.comisionM.DefaultCellStyle = dataGridViewCellStyle91;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.comisionM.DefaultCellStyle = dataGridViewCellStyle1;
             this.comisionM.HeaderText = "Comision";
             this.comisionM.Name = "comisionM";
             // 
             // probabilidadAm
             // 
-            dataGridViewCellStyle92.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle92.Format = "N0";
-            dataGridViewCellStyle92.NullValue = null;
-            this.probabilidadAm.DefaultCellStyle = dataGridViewCellStyle92;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.probabilidadAm.DefaultCellStyle = dataGridViewCellStyle2;
             this.probabilidadAm.HeaderText = "Probabilidad";
             this.probabilidadAm.Name = "probabilidadAm";
             // 
@@ -370,9 +370,9 @@
             // 
             this.groupBox4.Controls.Add(this.dgwcomisionAL);
             this.groupBox4.Location = new System.Drawing.Point(10, 186);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(292, 164);
             this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
@@ -385,7 +385,7 @@
             this.comisonAL,
             this.dataGridViewTextBoxColumn1});
             this.dgwcomisionAL.Location = new System.Drawing.Point(14, 32);
-            this.dgwcomisionAL.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgwcomisionAL.Margin = new System.Windows.Forms.Padding(2);
             this.dgwcomisionAL.Name = "dgwcomisionAL";
             this.dgwcomisionAL.RowTemplate.Height = 24;
             this.dgwcomisionAL.Size = new System.Drawing.Size(263, 122);
@@ -393,10 +393,10 @@
             // 
             // comisonAL
             // 
-            dataGridViewCellStyle93.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle93.Format = "N2";
-            dataGridViewCellStyle93.NullValue = null;
-            this.comisonAL.DefaultCellStyle = dataGridViewCellStyle93;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.comisonAL.DefaultCellStyle = dataGridViewCellStyle3;
             this.comisonAL.HeaderText = "Comisión";
             this.comisonAL.Name = "comisonAL";
             // 
@@ -409,9 +409,9 @@
             // 
             this.groupBox6.Controls.Add(this.dgwTipoAuto);
             this.groupBox6.Location = new System.Drawing.Point(24, 236);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox6.Size = new System.Drawing.Size(298, 164);
             this.groupBox6.TabIndex = 12;
             this.groupBox6.TabStop = false;
@@ -426,7 +426,7 @@
             this.probAV,
             this.tipoAutoNumber});
             this.dgwTipoAuto.Location = new System.Drawing.Point(14, 32);
-            this.dgwTipoAuto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgwTipoAuto.Margin = new System.Windows.Forms.Padding(2);
             this.dgwTipoAuto.Name = "dgwTipoAuto";
             this.dgwTipoAuto.RowTemplate.Height = 24;
             this.dgwTipoAuto.Size = new System.Drawing.Size(268, 122);
@@ -440,10 +440,10 @@
             // 
             // probAV
             // 
-            dataGridViewCellStyle94.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle94.Format = "N0";
-            dataGridViewCellStyle94.NullValue = null;
-            this.probAV.DefaultCellStyle = dataGridViewCellStyle94;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.probAV.DefaultCellStyle = dataGridViewCellStyle4;
             this.probAV.HeaderText = "Probabilidad";
             this.probAV.Name = "probAV";
             this.probAV.ReadOnly = true;
@@ -459,9 +459,9 @@
             // 
             this.groupBox3.Controls.Add(this.dgwcantautos);
             this.groupBox3.Location = new System.Drawing.Point(24, 21);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(298, 212);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
@@ -475,7 +475,7 @@
             this.cant,
             this.prob});
             this.dgwcantautos.Location = new System.Drawing.Point(14, 32);
-            this.dgwcantautos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgwcantautos.Margin = new System.Windows.Forms.Padding(2);
             this.dgwcantautos.Name = "dgwcantautos";
             this.dgwcantautos.RowTemplate.Height = 24;
             this.dgwcantautos.Size = new System.Drawing.Size(268, 167);
@@ -483,20 +483,20 @@
             // 
             // cant
             // 
-            dataGridViewCellStyle95.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle95.Format = "N0";
-            dataGridViewCellStyle95.NullValue = null;
-            this.cant.DefaultCellStyle = dataGridViewCellStyle95;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.cant.DefaultCellStyle = dataGridViewCellStyle5;
             this.cant.HeaderText = "Cantidad";
             this.cant.Name = "cant";
             this.cant.ReadOnly = true;
             // 
             // prob
             // 
-            dataGridViewCellStyle96.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle96.Format = "N0";
-            dataGridViewCellStyle96.NullValue = null;
-            this.prob.DefaultCellStyle = dataGridViewCellStyle96;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.prob.DefaultCellStyle = dataGridViewCellStyle6;
             this.prob.HeaderText = "Probabilidad";
             this.prob.Name = "prob";
             // 
@@ -507,9 +507,9 @@
             this.TpRSimulacion.Controls.Add(this.groupBox1);
             this.TpRSimulacion.Controls.Add(this.dgw_simulacion);
             this.TpRSimulacion.Location = new System.Drawing.Point(4, 22);
-            this.TpRSimulacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TpRSimulacion.Margin = new System.Windows.Forms.Padding(2);
             this.TpRSimulacion.Name = "TpRSimulacion";
-            this.TpRSimulacion.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TpRSimulacion.Padding = new System.Windows.Forms.Padding(2);
             this.TpRSimulacion.Size = new System.Drawing.Size(1109, 477);
             this.TpRSimulacion.TabIndex = 1;
             this.TpRSimulacion.Text = "Resultado Simulacion";
@@ -526,16 +526,6 @@
             this.groupBox2.Text = "Conclusiones";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // lblResultado
-            // 
-            this.lblResultado.AutoSize = true;
-            this.lblResultado.Location = new System.Drawing.Point(241, 16);
-            this.lblResultado.Name = "lblResultado";
-            this.lblResultado.Size = new System.Drawing.Size(40, 13);
-            this.lblResultado.TabIndex = 0;
-            this.lblResultado.Text = "           ";
-            this.lblResultado.Click += new System.EventHandler(this.lblResultado_Click);
-            // 
             // lblpromparcial
             // 
             this.lblpromparcial.AutoSize = true;
@@ -545,6 +535,16 @@
             this.lblpromparcial.TabIndex = 1;
             this.lblpromparcial.Text = "           ";
             this.lblpromparcial.Click += new System.EventHandler(this.lblpromparcial_Click);
+            // 
+            // lblResultado
+            // 
+            this.lblResultado.AutoSize = true;
+            this.lblResultado.Location = new System.Drawing.Point(241, 16);
+            this.lblResultado.Name = "lblResultado";
+            this.lblResultado.Size = new System.Drawing.Size(40, 13);
+            this.lblResultado.TabIndex = 0;
+            this.lblResultado.Text = "           ";
+            this.lblResultado.Click += new System.EventHandler(this.lblResultado_Click);
             // 
             // Form1
             // 

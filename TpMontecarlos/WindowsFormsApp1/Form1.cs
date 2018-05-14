@@ -114,7 +114,7 @@ namespace AgenciaAutos
             {
                 c = 2;
             }
-            for (int i = 0; i < dt.RowCount - 1; i++)
+            for (int i = 0; i < dt.RowCount; i++)
             {
                 var z = dt.Rows[i].Cells[c].Value.ToString();
                 var b = dt.Rows[i].Cells[1].Value.ToString();
