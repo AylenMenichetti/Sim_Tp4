@@ -58,6 +58,8 @@ namespace AgenciaAutos
             this.txt_cantSemanas.Text = "1000";
             this.txt_mostrarDesde.Text = "1";
 
+            
+
         }
 
         private void btn_simular_Click(object sender, EventArgs e)
@@ -78,46 +80,29 @@ namespace AgenciaAutos
             ComisionAL = new Distribuciones(ListaComisionAL);
             ComisionAM = new Distribuciones(ListaComisionAM);
 
-            if (rad_VerTodos.Checked)
-            {
-                Simular();
-            }
 
-            else if (rad_v1.Checked)
-            {
-                Simular();
-            }
+            Simular();
+            dgw_simulacion.Columns[9].Visible = false;
 
-            else if (rad_v2.Checked)
-            {
-                Simular();
-            }
-
-            else if (rad_v3.Checked)
-            {
-                Simular();
-            }
-            else if (rad_v4.Checked)
-            {
-                Simular();
-            }
         }
 
 
         private void Simular()
         {
-            double acumtotalporvendedor = 0;
-
-            dgw_simulacion.DataSource = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM, ref acumtotalporvendedor);
+            double promtotal = 0;
+            string textpromparc = "";
+            dgw_simulacion.DataSource = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM, ref promtotal, ref textpromparc);
             dgw_simulacion.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgw_simulacion.Columns[4].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgw_simulacion.Columns[5].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgw_simulacion.Columns[6].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgw_simulacion.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            acumtotalporvendedor = acumtotalporvendedor / 4;
-            lblResultado.Text = "Comisión promedio de los vendedores en una semana: " + acumtotalporvendedor.ToString();
-
+            
+            lblResultado.Text = "Comisión promedio de los vendedores en una semana: " + promtotal.ToString();
+            lblpromparcial.Text = textpromparc;
             TcRSimulacion.SelectTab(TpRSimulacion);
+
+         
         }
 
         private List<Probabilidades> generarProbabilidades(DataGridView dt, List<Probabilidades> probabilidades)
@@ -149,6 +134,89 @@ namespace AgenciaAutos
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblResultado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblpromparcial_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void filtrar(int vendedor) {
+
+
+            foreach (DataGridViewRow row in dgw_simulacion.Rows)
+            {
+                if (Convert.ToInt32(row.Cells[9].Value) != vendedor)
+                {
+
+                    CurrencyManager cm = (CurrencyManager)BindingContext[dgw_simulacion.DataSource];
+                    cm.SuspendBinding();
+                    row.Visible = false;
+                }
+
+
+
+            }
+        }
+
+
+
+
+        //DataTable dt = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM, ref promtotal, ref textpromparc);
+        //dgw_simulacion.DataSource = dt;
+        //DataView view = dt.DefaultView;
+        //view.RowFilter = "";
+        //dgw_simulacion.DataSource = view;
+
+
+
+
+        private void traertodos()
+        {
+            foreach (DataGridViewRow row in dgw_simulacion.Rows)
+            {        
+                    row.Visible = true;
+            
+            }
+        }
+
+
+
+
+        private void rad_v1_CheckedChanged(object sender, EventArgs e)
+        {
+            traertodos();
+            filtrar(1);
+        }
+
+        private void rad_VerTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            traertodos();
+
+
+        }
+
+        private void rad_v2_CheckedChanged(object sender, EventArgs e)
+        {
+            traertodos();
+            filtrar(2);
+        }
+
+        private void rad_v3_CheckedChanged(object sender, EventArgs e)
+        {
+            traertodos();
+            filtrar(3);
+        }
+
+        private void rad_v4_CheckedChanged(object sender, EventArgs e)
+        {
+            traertodos();
+            filtrar(4);
         }
     }
 }

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using Simlib.Tabla_Probabilidades;
 
-
 namespace Simlib
 {
     public class ManejadorSimulacion
@@ -15,7 +14,7 @@ namespace Simlib
         {
         }
 
-        public DataTable Simular(int CantSemanas, int filasMostrar, int mostrarDesde, Distribuciones cantautos, Distribuciones tipoAuto, Distribuciones ComisionesAL, Distribuciones ComisionesAM, ref double acumtotalvendedor)
+        public DataTable Simular(int CantSemanas, int filasMostrar, int mostrarDesde, Distribuciones cantautos, Distribuciones tipoAuto, Distribuciones ComisionesAL, Distribuciones ComisionesAM, ref double promtotal, ref string textpromparcial)
         {
             DataTable tabla = new DataTable(); //Tabla que será devuelta
             tabla.Columns.Add("Semana Numero:");
@@ -31,13 +30,16 @@ namespace Simlib
 
             var mostrarHasta = mostrarDesde + filasMostrar;
             Random r = new Random();
-
-
+            double acumtotalvendedor = 0;
+            double acum = 0;
+            textpromparcial += "Promedio por Semana:\n";
             for (int i = 0; i < 4; i++) //Un bucle por vendedor
             {
 
                 String[] vector = new String[10];
                 long vendedor = i + 1;
+                double promparcial = 0;
+              
 
                 for (int j = 1; j <= CantSemanas; j++)//bucle por semana
 
@@ -48,7 +50,6 @@ namespace Simlib
                     double rndCantAuto = cantautos.GenerarRnd(r);
                     vector[1] = rndCantAuto.ToString();
                     vector[2] = cantautos.ObtenerValorAsociado(rndCantAuto).ToString();
-
                     String rndComisionTexto = "";
                     String rndtipoAutoTexto = "";
                     String tipoAutoTexto = "";
@@ -58,12 +59,12 @@ namespace Simlib
                     {
                         double rndtipoAuto = tipoAuto.GenerarRnd(r);
                         int tipoaut = (int)tipoAuto.ObtenerValorAsociado(rndtipoAuto);
-
+                        
                         double rndcomision = Math.Truncate(r.NextDouble() * 100);
                         double comision = buscarcomision(tipoaut, rndcomision, ComisionesAL, ComisionesAM);
 
                         rndtipoAutoTexto += rndtipoAuto.ToString() + Environment.NewLine;
-                        tipoAutoTexto += tipoaut + Environment.NewLine;
+                        tipoAutoTexto += buscarTipo(tipoaut) + Environment.NewLine;
                         rndComisionTexto += (rndtipoAuto.Equals("1") ? " " : rndcomision.ToString())  + Environment.NewLine;
                         comisionTexto += comision + Environment.NewLine;
 
@@ -82,18 +83,18 @@ namespace Simlib
                         tabla.LoadDataRow(vector, true);
                 }
 
-
-                //if (CantSemanas == CantSemanas)
-                //{   tabla.LoadDataRow(vector, true);
                 tabla.LoadDataRow(vector, true);
-                acumtotalvendedor += double.Parse(vector[8]);
-                //}
 
 
+                
+                promparcial = double.Parse(vector[8]) / CantSemanas;//acumulado/cantsemanas
 
 
+                acumtotalvendedor += double.Parse(vector[8]);//suma los acumulados
+                textpromparcial += "     Vendedor N°" + (i+1) + ": " + promparcial + "\n";
+                acum += promparcial;
             }
-
+            promtotal = acum / 4;
             return tabla;
         }
 
@@ -120,6 +121,27 @@ namespace Simlib
             }
         }
 
+        public string buscarTipo(int tipo)
+        {
+            switch (tipo)
+            {
 
+                case 1:
+                    //Auto Compacto
+                    return "Compacto(C)";
+
+                case 2:
+                    //Auto Mediano
+                    return "Auto Mediano(AM)";
+
+                case 3:
+                    //Auto De Lujo
+                    return "Auto de Lujo(AL)";
+
+                default:
+                    return "n";
+
+            }
+        }
     }
 }
