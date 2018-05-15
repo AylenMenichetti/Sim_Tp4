@@ -14,7 +14,7 @@ namespace Simlib
         public double PromedioIndividual { get; protected set; }
         public double PromedioGrupal { get; protected set; }
 
-        public void Simular(int CantSemanas, int filasMostrar, int mostrarDesde, Distribuciones cantautos, Distribuciones tipoAuto, Distribuciones ComisionesAL, Distribuciones ComisionesAM)
+        public void Simular(int CantSemanas, int filasMostrar, int mostrarDesde, Distribuciones<int> cantautos, Distribuciones<TipoAuto> tipoAuto, Distribuciones<double> ComisionesAL, Distribuciones<double> ComisionesAM)
         {
             DataTable tabla = new DataTable(); //Tabla que será devuelta
             tabla.Columns.Add("Semana Numero:");
@@ -43,7 +43,7 @@ namespace Simlib
                 //Semana
                 vector[0] = j.ToString();
 
-                double rndCantAuto = cantautos.GenerarRnd(r);
+                double rndCantAuto = cantautos.GenerarRnd();
                 //Rnd Cantidad Autos
                 vector[1] = rndCantAuto.ToString();
                 //Cantidad Autos
@@ -56,8 +56,10 @@ namespace Simlib
                 //Iteraciones por autos (Demanda)
                 for (int k = 0; k < int.Parse(vector[2]); k++)
                 {
-                    double rndtipoAuto = tipoAuto.GenerarRnd(r);
-                    int tipoaut = (int)tipoAuto.ObtenerValorAsociado(rndtipoAuto);
+                    double rndtipoAuto = tipoAuto.GenerarRnd();
+                    var tipoauto = tipoAuto.ObtenerValorAsociado(rndtipoAuto);
+
+                    int tipoaut = tipoauto.Numero;
 
                     double rndcomision = Math.Truncate(r.NextDouble() * 100);
                     double comision = buscarcomision(tipoaut, rndcomision, ComisionesAL, ComisionesAM);
@@ -98,7 +100,7 @@ namespace Simlib
             this.info = tabla;
         }
 
-        public double buscarcomision(int tipo, double rnd, Distribuciones comisionAL, Distribuciones comisionAM)
+        public double buscarcomision(int tipo, double rnd, Distribuciones<double> comisionAL, Distribuciones<double> comisionAM)
         {
             switch (tipo)
             {

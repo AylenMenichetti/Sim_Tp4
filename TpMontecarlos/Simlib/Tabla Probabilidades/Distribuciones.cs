@@ -30,6 +30,12 @@ namespace Simlib.Tabla_Probabilidades
             return num;
         }
 
+        public RndValor<T> generar()
+        {
+            var rnd = this.GenerarRnd();
+            return new RndValor<T>(rnd, ObtenerValorAsociado(rnd));
+        }
+
         //apartir del rnd, devuelve el valor asociado
         public T ObtenerValorAsociado(double rnd)
         {
@@ -47,7 +53,7 @@ namespace Simlib.Tabla_Probabilidades
         //Genera la tabla con los intervalos
         private void GenerarTabla()
         {   //ordena las p(x)
-            Valores = Valores.OrderBy(v => v.ValorAsociado).ToList();
+            //Valores = Valores.OrderBy(v => v.ValorAsociado).ToList();
 
             intervaloHasta = new List<double> { 0 };
 

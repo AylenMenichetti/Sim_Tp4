@@ -8,9 +8,9 @@ namespace Simlib
 {
     public class RndValor<T>
     {
-        public int Random { get;protected set; }
+        public double Random { get;protected set; }
         public T Valor  { get;protected set; }
-        public RndValor(int rnd, T valor)
+        public RndValor(double rnd, T valor)
         {
             this.Valor = valor;
             this.Random = rnd;

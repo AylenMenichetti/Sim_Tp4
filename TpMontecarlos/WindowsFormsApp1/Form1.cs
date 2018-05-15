@@ -9,11 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Simlib.Tabla_Probabilidades;
 using Simlib;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Threading;
-using System.Windows.Forms;
 
 namespace AgenciaAutos
 {
@@ -98,59 +93,17 @@ namespace AgenciaAutos
                 MessageBox.Show("Los numeros no cierran");
                 return;
             }
-            
+
             //Crea Distribucion de Cantidad de Autos.
-            List<Probabilidades<int>> ListaCantAutos = new List<Probabilidades<int>>();
-            foreach (DataGridViewRow r in dgwcantautos.Rows)
-            {
-                var valor = r.Cells[0].Value;
-                var probabilidad = r.Cells[1].Value;
-                ListaCantAutos.Add(new Probabilidades<int>(Convert.ToInt32(valor), Convert.ToDouble(probabilidad)));
-            }
+            this.generarDistribucionCantidad();
+
 
             //Crea Distribucion de Comisiones.
-            List<Probabilidades<double>> ListaComisionAL = new List<Probabilidades<double>>();
-            List<Probabilidades<double>> ListaComisionAM = new List<Probabilidades<double>>();
-            List<Probabilidades<double>> ListaComisionComp = new List<Probabilidades<double>>();
-            foreach(DataGridViewRow r in dgwcomisionAL.Rows)
-            {
-                var valor = r.Cells[0].Value;
-                var probabilidad = r.Cells[1].Value;
-                ListaComisionAL.Add(new Probabilidades<double>(Convert.ToDouble(valor), Convert.ToDouble(probabilidad)));
-            }
-            this.ComisionAL = new Distribuciones<double>(ListaComisionAL);
-            foreach(DataGridViewRow r in dgwcomisionAM.Rows)
-            {
-                var valor = r.Cells[0].Value;
-                var probabilidad = r.Cells[1].Value;
-                ListaComisionAM.Add(new Probabilidades<double>(Convert.ToDouble(valor), Convert.ToDouble(probabilidad)));
-            }
-            this.ComisionAM = new Distribuciones<double>(ListaComisionAM);
-
-            var comison_comp = txtComisionAC.Text;
-            ListaComisionComp.Add(new Probabilidades<double>(Convert.ToDouble(comison_comp), 100));
-            this.ComisionComp = new Distribuciones<double>(ListaComisionComp);
+            this.generarDistrivucionesTipos();
 
             //Crea Distribucion de Tipo de Autos
-            List<Probabilidades<TipoAuto>> ListaTiposAutos = new List<Probabilidades<TipoAuto>>();
-            Probabilidades<TipoAuto> p;
-            foreach (DataGridViewRow r in dgwTipoAuto.Rows)
-            {
-                var nombre = r.Cells["Tipo Auto"].Value.ToString();
-                var prob = r.Cells["Probabilidad"].Value;
-                var tipo = new TipoAuto();
-                tipo.Nombre = nombre;
-                if (nombre == "Compacto(C)")
-                    tipo.DistribucionComision = ComisionComp;
-                else if (nombre == "Auto Mediano (AM)")
-                    tipo.DistribucionComision = ComisionAM;
-                else
-                    tipo.DistribucionComision = ComisionAL;
-                        
-                p = new Probabilidades<TipoAuto>(tipo, Convert.ToDouble(prob));
-                ListaTiposAutos.Add(p);
-            }
-            TipoAuto = new Distribuciones<TipoAuto>(ListaTiposAutos);
+            this.generarDistribucionTipoAuto();
+            
 
             /*this.generarProbabilidades(dgwcantautos, ListaCantAutos);
             this.generarProbabilidades(dgwTipoAuto, ListatiposAutos);
@@ -166,6 +119,74 @@ namespace AgenciaAutos
             //dgw_simulacion.Columns[9].Visible = false;
 
         }
+
+        private void generarDistribucionCantidad()
+        {
+            List<Probabilidades<int>> ListaCantAutos = new List<Probabilidades<int>>();
+            foreach (DataGridViewRow r in dgwcantautos.Rows)
+            {
+                var valor = r.Cells[0].Value;
+                var probabilidad = r.Cells[1].Value;
+                ListaCantAutos.Add(new Probabilidades<int>(Convert.ToInt32(valor), Convert.ToDouble(probabilidad)));
+            }
+            this.CantAutosVendidos = new Distribuciones<int>(ListaCantAutos);
+        }
+        private void generarDistrivucionesTipos()
+        {
+            List<Probabilidades<double>> ListaComisionAL = new List<Probabilidades<double>>();
+            List<Probabilidades<double>> ListaComisionAM = new List<Probabilidades<double>>();
+            List<Probabilidades<double>> ListaComisionComp = new List<Probabilidades<double>>();
+            foreach (DataGridViewRow r in dgwcomisionAL.Rows)
+            {
+                var valor = r.Cells[0].Value;
+                var probabilidad = r.Cells[1].Value;
+                ListaComisionAL.Add(new Probabilidades<double>(Convert.ToDouble(valor), Convert.ToDouble(probabilidad)));
+            }
+            this.ComisionAL = new Distribuciones<double>(ListaComisionAL);
+            foreach (DataGridViewRow r in dgwcomisionAM.Rows)
+            {
+                var valor = r.Cells[0].Value;
+                var probabilidad = r.Cells[1].Value;
+                ListaComisionAM.Add(new Probabilidades<double>(Convert.ToDouble(valor), Convert.ToDouble(probabilidad)));
+            }
+            this.ComisionAM = new Distribuciones<double>(ListaComisionAM);
+
+            var comison_comp = txtComisionAC.Text;
+            ListaComisionComp.Add(new Probabilidades<double>(Convert.ToDouble(comison_comp), 100));
+            this.ComisionComp = new Distribuciones<double>(ListaComisionComp);
+        }
+        private void generarDistribucionTipoAuto()
+        {
+            List<Probabilidades<TipoAuto>> ListaTiposAutos = new List<Probabilidades<TipoAuto>>();
+            Probabilidades<TipoAuto> p;
+            foreach (DataGridViewRow r in dgwTipoAuto.Rows)
+            {
+                var nombre = r.Cells[0].Value.ToString();
+                var prob = r.Cells[1].Value;
+                var tipo = new TipoAuto();
+                tipo.Nombre = nombre;
+                if (nombre == "Compacto(C)")
+                {
+                    tipo.DistribucionComision = ComisionComp;
+                    tipo.Numero = 1;
+                }
+                else if (nombre == "Auto Mediano (AM)")
+                {
+                    tipo.DistribucionComision = ComisionAM;
+                    tipo.Numero = 2;
+                }
+                else
+                {
+                    tipo.DistribucionComision = ComisionAL;
+                    tipo.Numero = 3;
+                }
+
+                p = new Probabilidades<TipoAuto>(tipo, Convert.ToDouble(prob));
+                ListaTiposAutos.Add(p);
+            }
+            this.TipoAuto = new Distribuciones<TipoAuto>(ListaTiposAutos);
+        }
+
         /*private List<Probabilidades> generarProbabilidades(DataGridView dt, List<Probabilidades> probabilidades)
         {
             Probabilidades pr;
@@ -192,6 +213,9 @@ namespace AgenciaAutos
         {
             double promtotal = 0;
             string textpromparc = "";
+
+            ManejadorSimulacion manejador = new ManejadorSimulacion(this.CantAutosVendidos, this.TipoAuto);
+
             dgw_simulacion.DataSource = manejador.Simular(
                 int.Parse(txt_cantSemanas.Text), 
                 int.Parse(txt_cantMostrar.Text), 
@@ -318,7 +342,7 @@ namespace AgenciaAutos
                 MessageBox.Show("Los numeros no cierran");
                 return;
             }
-            List<Probabilidades> ListaCantAutos = new List<Probabilidades>();
+            /*List<Probabilidades> ListaCantAutos = new List<Probabilidades>();
             List<Probabilidades> ListatiposAutos = new List<Probabilidades>();
             List<Probabilidades> ListaComisionAL = new List<Probabilidades>();
             List<Probabilidades> ListaComisionAM = new List<Probabilidades>();
@@ -345,7 +369,7 @@ namespace AgenciaAutos
             //MessageBox.Show($@"Promedio: ${handler.Promedio}");
             lblpromparcial.Text = $"Promedio Individual: {handler.PromedioIndividual.ToString("C")}";
             lblResultado.Text = $"Promedio Grupal: {handler.PromedioGrupal.ToString("C")}";
-            TcRSimulacion.SelectTab(TpRSimulacion);
+            TcRSimulacion.SelectTab(TpRSimulacion);*/
 
         }
     }

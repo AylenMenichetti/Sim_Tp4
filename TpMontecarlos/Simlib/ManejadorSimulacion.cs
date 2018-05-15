@@ -37,8 +37,40 @@ namespace Simlib
             tabla.Columns.Add("Vendedor");
 
             var mostrarHasta = mostrarDesde + filasMostrar;
+
+            string[] vector = new string[35];
+
+            for (int semana = 1; semana <= CantSemanas; semana++)
+            {
+                vector[0] = semana.ToString();
+
+                var ven1 = SubVectorVendedor();
+                var ven2 = SubVectorVendedor();
+                var ven3 = SubVectorVendedor();
+                var ven4 = SubVectorVendedor();
+
+                // del 1 al 7
+                agregarSubVendedor(ref vector, ref ven1, 1);
+                vector[8] = "acum v1";
+                
+                //del 9 al 15
+                agregarSubVendedor(ref vector, ref ven2, 15);
+                vector[16] = "acum v2";
+
+                //del 17 al 23
+                agregarSubVendedor(ref vector, ref ven3, 17);
+                vector[24] = "acum v3";
+
+                //del 25 al 31
+                agregarSubVendedor(ref vector, ref ven4, 25);
+                vector[31] = "acum v4";
+
+                vector[32] = "total_comisiones";
+                vector[33] = "acum total_comisiones";
+
+            }
             //Random r = new Random();
-            double acumtotalvendedor = 0;
+            /*double acumtotalvendedor = 0;
             double acum = 0;
             textpromparcial += "Promedio por Semana:\n";
             for (int i = 0; i < 4; i++) //Un bucle por vendedor
@@ -102,7 +134,7 @@ namespace Simlib
                 textpromparcial += "     Vendedor N°" + (i+1) + ": " + promparcial + "\n";
                 acum += promparcial;
             }
-            promtotal = acum / 4;
+            promtotal = acum / 4;*/
             return tabla;
         }
 
@@ -111,17 +143,46 @@ namespace Simlib
             String[] subVector = new String[7];
             //Cantidad Auto (Rnd + Nro) - Tipo Autos (Rnd + nro) - Comisiones (Rnd + Nros) - Comision Total Ven
 
-            double rndCantAutos = this.DistCantAutos.GenerarRnd();
-            int nroCantAutos =this.DistCantAutos
+            RndValor<int> demanda = this.DistCantAutos.generar();
 
-            double rndTipoAuto = tipoAuto.GenerarRnd();
-            int nroTipoAuto = (int)tipoAuto.ObtenerValorAsociado(rndtipoAuto);
+            string tipos_rnd_tx = "";
+            string tipos_tx = "";
+            string comisiones_rnd_tx = "";
+            string comisiones_tx = "";
+            double comision_total = 0;
+            for (int i = 0; i < demanda.Valor; i++)
+            {
+                var tipo = this.DistTiposAuto.generar();
+                tipos_tx += tipo.Valor.Nombre + "\n";
+                tipos_rnd_tx += tipo.Random + "\n";
+                var comision = tipo.Valor.DistribucionComision.generar();
+                comisiones_tx += comision.Valor + "\n";
+                comisiones_rnd_tx += comision.Random + "\n";
+                comision_total += comision.Valor;
+            }
+
+            //Cantidad Auto (Rnd + Nro) - Tipo Autos (Rnd + nro) - Comisiones (Rnd + Nros) - Comision Total Ven
+            subVector[0] = demanda.Random.ToString();
+            subVector[1] = demanda.Valor.ToString();
+            subVector[2] = tipos_rnd_tx;
+            subVector[3] = tipos_tx;
+            subVector[4] = comisiones_rnd_tx;
+            subVector[5] = comisiones_tx;
+            subVector[6] = comision_total.ToString();
 
 
             return subVector;
         }
 
-        public double buscarcomision(int tipo, double rnd, Distribuciones comisionAL, Distribuciones comisionAM)
+        private void agregarSubVendedor(ref string[] vector,ref string[] vendedor, int desde)
+        {
+            for (int i = 0; i < vendedor.Length; i++)
+            {
+                vector[desde + i] = vendedor[i];
+            }
+        }
+
+        /*public double buscarcomision(int tipo, double rnd, Distribuciones comisionAL, Distribuciones comisionAM)
         {
             switch (tipo)
             {
@@ -165,6 +226,6 @@ namespace Simlib
                     return "n";
 
             }
-        }
+        }*/
     }
 }
