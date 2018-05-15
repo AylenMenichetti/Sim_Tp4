@@ -55,6 +55,7 @@ namespace Simlib
                     String tipoAutoTexto = "";
                     String comisionTexto = "";
                     double ComisionTotal = 0;
+                    //Iteraciones por autos (Demanda)
                     for (int k = 0; k < int.Parse(vector[2]); k++)
                     {
                         double rndtipoAuto = tipoAuto.GenerarRnd(r);

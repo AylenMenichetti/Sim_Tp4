@@ -43,6 +43,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="ComisionAcumulada.cs" />
     <Compile Include="ComisionTotal.cs" />
+    <Compile Include="ManejadorAlt.cs" />
     <Compile Include="ManejadorSimulacion.cs" />
     <Compile Include="Promedio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

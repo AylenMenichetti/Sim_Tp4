@@ -15,7 +15,6 @@ using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 
-
 namespace AgenciaAutos
 {
     public partial class Form1 : Form
@@ -62,9 +61,42 @@ namespace AgenciaAutos
 
         }
 
+        private bool validar()
+        {
+            int acum = 0;
+            foreach(DataGridViewRow row in dgwcantautos.Rows)
+            {
+                acum += Convert.ToInt32(row.Cells[1].Value);
+            }
+            if (acum != 100) return false;
+            acum = 0;
+            foreach (DataGridViewRow row in dgwTipoAuto.Rows)
+            {
+                acum += Convert.ToInt32(row.Cells[1].Value);
+            }
+            if (acum != 100) return false;
+            acum = 0;
+            foreach (DataGridViewRow row in dgwcomisionAL.Rows)
+            {
+                acum += Convert.ToInt32(row.Cells[1].Value);
+            }
+            if (acum != 100) return false;
+            acum = 0;
+            foreach (DataGridViewRow row in dgwcomisionAM.Rows)
+            {
+                acum += Convert.ToInt32(row.Cells[1].Value);
+            }
+            if (acum != 100) return false;
+            return true;
+        }
+
         private void btn_simular_Click(object sender, EventArgs e)
         {
-            Probabilidades pr;
+            if (!validar())
+            {
+                MessageBox.Show("Los numeros no cierran");
+                return;
+            }
             List<Probabilidades> ListaCantAutos = new List<Probabilidades>();
             List<Probabilidades> ListatiposAutos = new List<Probabilidades>();
             List<Probabilidades> ListaComisionAL = new List<Probabilidades>();
@@ -217,6 +249,37 @@ namespace AgenciaAutos
         {
             traertodos();
             filtrar(4);
+        }
+
+        private void sim_btn_fede_Click(object sender, EventArgs e)
+        {
+            if (!validar())
+            {
+                MessageBox.Show("Los numeros no cierran");
+                return;
+            }
+            List<Probabilidades> ListaCantAutos = new List<Probabilidades>();
+            List<Probabilidades> ListatiposAutos = new List<Probabilidades>();
+            List<Probabilidades> ListaComisionAL = new List<Probabilidades>();
+            List<Probabilidades> ListaComisionAM = new List<Probabilidades>();
+
+            this.generarProbabilidades(dgwcantautos, ListaCantAutos);
+            this.generarProbabilidades(dgwTipoAuto, ListatiposAutos);
+            this.generarProbabilidades(dgwcomisionAL, ListaComisionAL);
+            this.generarProbabilidades(dgwcomisionAM, ListaComisionAM);
+
+            CantAutosVendidos = new Distribuciones(ListaCantAutos);
+            TipoAuto = new Distribuciones(ListatiposAutos);
+            ComisionAL = new Distribuciones(ListaComisionAL);
+            ComisionAM = new Distribuciones(ListaComisionAM);
+
+            ManejadorAlt handler = new ManejadorAlt();
+            handler.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM);
+
+            dgw_simulacion.DataSource = handler.info;
+            //MessageBox.Show($@"Promedio: ${handler.Promedio}");
+            lblResultado.Text = $"Promedio Individual: ${handler.PromedioIndividual}\nPromedio Grupal: ${handler.PromedioGrupal}";
+
         }
     }
 }

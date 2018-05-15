@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -76,6 +76,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblpromparcial = new System.Windows.Forms.Label();
             this.lblResultado = new System.Windows.Forms.Label();
+            this.sim_btn_fede = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_simulacion)).BeginInit();
             this.TcRSimulacion.SuspendLayout();
@@ -265,6 +266,7 @@
             this.TpParametros.Controls.Add(this.groupBox7);
             this.TpParametros.Controls.Add(this.groupBox6);
             this.TpParametros.Controls.Add(this.groupBox3);
+            this.TpParametros.Controls.Add(this.sim_btn_fede);
             this.TpParametros.Controls.Add(this.btn_simular);
             this.TpParametros.Location = new System.Drawing.Point(4, 22);
             this.TpParametros.Margin = new System.Windows.Forms.Padding(2);
@@ -337,6 +339,10 @@
             // 
             // dgwcomisionAM
             // 
+            this.dgwcomisionAM.AllowUserToAddRows = false;
+            this.dgwcomisionAM.AllowUserToDeleteRows = false;
+            this.dgwcomisionAM.AllowUserToResizeColumns = false;
+            this.dgwcomisionAM.AllowUserToResizeRows = false;
             this.dgwcomisionAM.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwcomisionAM.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.comisionM,
@@ -351,18 +357,18 @@
             // 
             // comisionM
             // 
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.comisionM.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.comisionM.DefaultCellStyle = dataGridViewCellStyle7;
             this.comisionM.HeaderText = "Comision";
             this.comisionM.Name = "comisionM";
             // 
             // probabilidadAm
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.probabilidadAm.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N0";
+            dataGridViewCellStyle8.NullValue = null;
+            this.probabilidadAm.DefaultCellStyle = dataGridViewCellStyle8;
             this.probabilidadAm.HeaderText = "Probabilidad";
             this.probabilidadAm.Name = "probabilidadAm";
             // 
@@ -380,6 +386,10 @@
             // 
             // dgwcomisionAL
             // 
+            this.dgwcomisionAL.AllowUserToAddRows = false;
+            this.dgwcomisionAL.AllowUserToDeleteRows = false;
+            this.dgwcomisionAL.AllowUserToResizeColumns = false;
+            this.dgwcomisionAL.AllowUserToResizeRows = false;
             this.dgwcomisionAL.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwcomisionAL.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.comisonAL,
@@ -393,10 +403,10 @@
             // 
             // comisonAL
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.comisonAL.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = null;
+            this.comisonAL.DefaultCellStyle = dataGridViewCellStyle9;
             this.comisonAL.HeaderText = "Comisión";
             this.comisonAL.Name = "comisonAL";
             // 
@@ -440,10 +450,10 @@
             // 
             // probAV
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.probAV.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = null;
+            this.probAV.DefaultCellStyle = dataGridViewCellStyle10;
             this.probAV.HeaderText = "Probabilidad";
             this.probAV.Name = "probAV";
             this.probAV.ReadOnly = true;
@@ -483,20 +493,20 @@
             // 
             // cant
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.cant.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.Format = "N0";
+            dataGridViewCellStyle11.NullValue = null;
+            this.cant.DefaultCellStyle = dataGridViewCellStyle11;
             this.cant.HeaderText = "Cantidad";
             this.cant.Name = "cant";
             this.cant.ReadOnly = true;
             // 
             // prob
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.prob.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N0";
+            dataGridViewCellStyle12.NullValue = null;
+            this.prob.DefaultCellStyle = dataGridViewCellStyle12;
             this.prob.HeaderText = "Probabilidad";
             this.prob.Name = "prob";
             // 
@@ -545,6 +555,17 @@
             this.lblResultado.TabIndex = 0;
             this.lblResultado.Text = "           ";
             this.lblResultado.Click += new System.EventHandler(this.lblResultado_Click);
+            // 
+            // sim_btn_fede
+            // 
+            this.sim_btn_fede.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.sim_btn_fede.Location = new System.Drawing.Point(712, 295);
+            this.sim_btn_fede.Name = "sim_btn_fede";
+            this.sim_btn_fede.Size = new System.Drawing.Size(138, 60);
+            this.sim_btn_fede.TabIndex = 8;
+            this.sim_btn_fede.Text = "SIMULAR FEDE";
+            this.sim_btn_fede.UseVisualStyleBackColor = false;
+            this.sim_btn_fede.Click += new System.EventHandler(this.sim_btn_fede_Click);
             // 
             // Form1
             // 
@@ -627,6 +648,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cant;
         private System.Windows.Forms.DataGridViewTextBoxColumn prob;
         private System.Windows.Forms.Label lblpromparcial;
+        private System.Windows.Forms.Button sim_btn_fede;
     }
 }
 
