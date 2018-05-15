@@ -28,22 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.rad_v1 = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rad_VerTodos = new System.Windows.Forms.RadioButton();
-            this.rad_v4 = new System.Windows.Forms.RadioButton();
-            this.rad_v3 = new System.Windows.Forms.RadioButton();
-            this.rad_v2 = new System.Windows.Forms.RadioButton();
             this.txt_cantSemanas = new System.Windows.Forms.TextBox();
             this.txt_mostrarDesde = new System.Windows.Forms.TextBox();
             this.txtComisionAC = new System.Windows.Forms.TextBox();
@@ -77,7 +71,6 @@
             this.lblpromparcial = new System.Windows.Forms.Label();
             this.lblResultado = new System.Windows.Forms.Label();
             this.sim_btn_fede = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_simulacion)).BeginInit();
             this.TcRSimulacion.SuspendLayout();
             this.TpParametros.SuspendLayout();
@@ -130,77 +123,6 @@
             this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 4;
             // 
-            // rad_v1
-            // 
-            this.rad_v1.AutoSize = true;
-            this.rad_v1.Location = new System.Drawing.Point(142, 38);
-            this.rad_v1.Name = "rad_v1";
-            this.rad_v1.Size = new System.Drawing.Size(80, 17);
-            this.rad_v1.TabIndex = 14;
-            this.rad_v1.Text = "Vendedor 1";
-            this.rad_v1.UseVisualStyleBackColor = true;
-            this.rad_v1.CheckedChanged += new System.EventHandler(this.rad_v1_CheckedChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.rad_VerTodos);
-            this.groupBox1.Controls.Add(this.rad_v4);
-            this.groupBox1.Controls.Add(this.rad_v3);
-            this.groupBox1.Controls.Add(this.rad_v2);
-            this.groupBox1.Controls.Add(this.rad_v1);
-            this.groupBox1.Location = new System.Drawing.Point(20, 17);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(506, 99);
-            this.groupBox1.TabIndex = 6;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Vendedores";
-            // 
-            // rad_VerTodos
-            // 
-            this.rad_VerTodos.AutoSize = true;
-            this.rad_VerTodos.Checked = true;
-            this.rad_VerTodos.Location = new System.Drawing.Point(53, 38);
-            this.rad_VerTodos.Name = "rad_VerTodos";
-            this.rad_VerTodos.Size = new System.Drawing.Size(74, 17);
-            this.rad_VerTodos.TabIndex = 13;
-            this.rad_VerTodos.TabStop = true;
-            this.rad_VerTodos.Text = "Ver Todos";
-            this.rad_VerTodos.UseVisualStyleBackColor = true;
-            this.rad_VerTodos.CheckedChanged += new System.EventHandler(this.rad_VerTodos_CheckedChanged);
-            // 
-            // rad_v4
-            // 
-            this.rad_v4.AutoSize = true;
-            this.rad_v4.Location = new System.Drawing.Point(400, 38);
-            this.rad_v4.Name = "rad_v4";
-            this.rad_v4.Size = new System.Drawing.Size(80, 17);
-            this.rad_v4.TabIndex = 17;
-            this.rad_v4.Text = "Vendedor 4";
-            this.rad_v4.UseVisualStyleBackColor = true;
-            this.rad_v4.CheckedChanged += new System.EventHandler(this.rad_v4_CheckedChanged);
-            // 
-            // rad_v3
-            // 
-            this.rad_v3.AutoSize = true;
-            this.rad_v3.Location = new System.Drawing.Point(314, 38);
-            this.rad_v3.Name = "rad_v3";
-            this.rad_v3.Size = new System.Drawing.Size(80, 17);
-            this.rad_v3.TabIndex = 16;
-            this.rad_v3.Text = "Vendedor 3";
-            this.rad_v3.UseVisualStyleBackColor = true;
-            this.rad_v3.CheckedChanged += new System.EventHandler(this.rad_v3_CheckedChanged);
-            // 
-            // rad_v2
-            // 
-            this.rad_v2.AutoSize = true;
-            this.rad_v2.Location = new System.Drawing.Point(228, 38);
-            this.rad_v2.Name = "rad_v2";
-            this.rad_v2.Size = new System.Drawing.Size(80, 17);
-            this.rad_v2.TabIndex = 15;
-            this.rad_v2.Text = "Vendedor 2";
-            this.rad_v2.UseVisualStyleBackColor = true;
-            this.rad_v2.CheckedChanged += new System.EventHandler(this.rad_v2_CheckedChanged);
-            // 
             // txt_cantSemanas
             // 
             this.txt_cantSemanas.Location = new System.Drawing.Point(130, 36);
@@ -232,7 +154,7 @@
             this.btn_simular.Name = "btn_simular";
             this.btn_simular.Size = new System.Drawing.Size(138, 60);
             this.btn_simular.TabIndex = 8;
-            this.btn_simular.Text = "SIMULAR";
+            this.btn_simular.Text = "SIMULAR (x4)";
             this.btn_simular.UseVisualStyleBackColor = false;
             this.btn_simular.Click += new System.EventHandler(this.btn_simular_Click);
             // 
@@ -357,18 +279,18 @@
             // 
             // comisionM
             // 
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = null;
-            this.comisionM.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Format = "N2";
+            dataGridViewCellStyle19.NullValue = null;
+            this.comisionM.DefaultCellStyle = dataGridViewCellStyle19;
             this.comisionM.HeaderText = "Comision";
             this.comisionM.Name = "comisionM";
             // 
             // probabilidadAm
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.probabilidadAm.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.Format = "N0";
+            dataGridViewCellStyle20.NullValue = null;
+            this.probabilidadAm.DefaultCellStyle = dataGridViewCellStyle20;
             this.probabilidadAm.HeaderText = "Probabilidad";
             this.probabilidadAm.Name = "probabilidadAm";
             // 
@@ -403,10 +325,10 @@
             // 
             // comisonAL
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = null;
-            this.comisonAL.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.Format = "N2";
+            dataGridViewCellStyle21.NullValue = null;
+            this.comisonAL.DefaultCellStyle = dataGridViewCellStyle21;
             this.comisonAL.HeaderText = "Comisión";
             this.comisonAL.Name = "comisonAL";
             // 
@@ -450,10 +372,10 @@
             // 
             // probAV
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = null;
-            this.probAV.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle22.Format = "N0";
+            dataGridViewCellStyle22.NullValue = null;
+            this.probAV.DefaultCellStyle = dataGridViewCellStyle22;
             this.probAV.HeaderText = "Probabilidad";
             this.probAV.Name = "probAV";
             this.probAV.ReadOnly = true;
@@ -493,20 +415,20 @@
             // 
             // cant
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.Format = "N0";
-            dataGridViewCellStyle11.NullValue = null;
-            this.cant.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.Format = "N0";
+            dataGridViewCellStyle23.NullValue = null;
+            this.cant.DefaultCellStyle = dataGridViewCellStyle23;
             this.cant.HeaderText = "Cantidad";
             this.cant.Name = "cant";
             this.cant.ReadOnly = true;
             // 
             // prob
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle12.Format = "N0";
-            dataGridViewCellStyle12.NullValue = null;
-            this.prob.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle24.Format = "N0";
+            dataGridViewCellStyle24.NullValue = null;
+            this.prob.DefaultCellStyle = dataGridViewCellStyle24;
             this.prob.HeaderText = "Probabilidad";
             this.prob.Name = "prob";
             // 
@@ -514,7 +436,6 @@
             // 
             this.TpRSimulacion.BackColor = System.Drawing.Color.WhiteSmoke;
             this.TpRSimulacion.Controls.Add(this.groupBox2);
-            this.TpRSimulacion.Controls.Add(this.groupBox1);
             this.TpRSimulacion.Controls.Add(this.dgw_simulacion);
             this.TpRSimulacion.Location = new System.Drawing.Point(4, 22);
             this.TpRSimulacion.Margin = new System.Windows.Forms.Padding(2);
@@ -528,9 +449,9 @@
             // 
             this.groupBox2.Controls.Add(this.lblpromparcial);
             this.groupBox2.Controls.Add(this.lblResultado);
-            this.groupBox2.Location = new System.Drawing.Point(532, 17);
+            this.groupBox2.Location = new System.Drawing.Point(20, 17);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(556, 99);
+            this.groupBox2.Size = new System.Drawing.Size(1068, 99);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Conclusiones";
@@ -563,7 +484,7 @@
             this.sim_btn_fede.Name = "sim_btn_fede";
             this.sim_btn_fede.Size = new System.Drawing.Size(138, 60);
             this.sim_btn_fede.TabIndex = 8;
-            this.sim_btn_fede.Text = "SIMULAR FEDE";
+            this.sim_btn_fede.Text = "SIMULAR (x1)";
             this.sim_btn_fede.UseVisualStyleBackColor = false;
             this.sim_btn_fede.Click += new System.EventHandler(this.sim_btn_fede_Click);
             // 
@@ -579,8 +500,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgw_simulacion)).EndInit();
             this.TcRSimulacion.ResumeLayout(false);
             this.TpParametros.ResumeLayout(false);
@@ -610,11 +529,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton rad_v1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rad_v4;
-        private System.Windows.Forms.RadioButton rad_v3;
-        private System.Windows.Forms.RadioButton rad_v2;
         private System.Windows.Forms.TextBox txt_cantSemanas;
         private System.Windows.Forms.TextBox txt_mostrarDesde;
         private System.Windows.Forms.TextBox txtComisionAC;
@@ -637,7 +551,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_cantMostrar;
         private System.Windows.Forms.Label lblResultado;
-        private System.Windows.Forms.RadioButton rad_VerTodos;
         private System.Windows.Forms.DataGridViewTextBoxColumn comisionM;
         private System.Windows.Forms.DataGridViewTextBoxColumn probabilidadAm;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipoAutoTexto;

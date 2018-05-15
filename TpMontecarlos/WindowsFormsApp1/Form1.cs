@@ -277,8 +277,15 @@ namespace AgenciaAutos
             handler.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM);
 
             dgw_simulacion.DataSource = handler.info;
+            dgw_simulacion.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.Columns[4].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.Columns[5].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.Columns[6].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             //MessageBox.Show($@"Promedio: ${handler.Promedio}");
-            lblResultado.Text = $"Promedio Individual: ${handler.PromedioIndividual}\nPromedio Grupal: ${handler.PromedioGrupal}";
+            lblpromparcial.Text = $"Promedio Individual: {handler.PromedioIndividual.ToString("C")}";
+            lblResultado.Text = $"Promedio Grupal: {handler.PromedioGrupal.ToString("C")}";
+            TcRSimulacion.SelectTab(TpRSimulacion);
 
         }
     }
