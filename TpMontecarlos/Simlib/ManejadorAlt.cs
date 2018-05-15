@@ -14,6 +14,17 @@ namespace Simlib
         public double PromedioIndividual { get; protected set; }
         public double PromedioGrupal { get; protected set; }
 
+        public Distribuciones<int> DistribucionCantidad { get; protected set; }
+        public Distribuciones<double> DistribucionComAL { get; protected set; }
+        public Distribuciones<double> DistribucionComAM { get; protected set; }
+
+        public ManejadorAlt(Distribuciones<int> cantidad, Distribuciones<double> lujo, Distribuciones<double> mediano)
+        {
+            this.DistribucionCantidad = cantidad;
+            this.DistribucionComAL = lujo;
+            this.DistribucionComAM = mediano;
+        }
+
         public void Simular(int CantSemanas, int filasMostrar, int mostrarDesde, Distribuciones<int> cantautos, Distribuciones<TipoAuto> tipoAuto, Distribuciones<double> ComisionesAL, Distribuciones<double> ComisionesAM)
         {
             DataTable tabla = new DataTable(); //Tabla que será devuelta
@@ -30,11 +41,10 @@ namespace Simlib
             var mostrarHasta = mostrarDesde + filasMostrar;
             Random r = new Random();
             //double acumtotalvendedor = 0;
-            //double acum = 0;
+            double acum = 0;
             //textpromparcial += "Promedio por Semana:\n";
 
             String[] vector = new String[9];
-            double promparcial = 0;
 
 
             for (int j = 1; j <= CantSemanas; j++)//bucle por semana
@@ -61,8 +71,11 @@ namespace Simlib
 
                     int tipoaut = tipoauto.Numero;
 
-                    double rndcomision = Math.Truncate(r.NextDouble() * 100);
-                    double comision = buscarcomision(tipoaut, rndcomision, ComisionesAL, ComisionesAM);
+                    //double rndcomision = Math.Truncate(r.NextDouble() * 100);
+                    //double comision = buscarcomision(tipoaut, rndcomision, ComisionesAL, ComisionesAM);
+                    var valorRnd = buscarcomision(tipoaut);
+                    double rndcomision = valorRnd.Random;
+                    double comision = valorRnd.Valor;
 
                     rndtipoAutoTexto += rndtipoAuto.ToString() + Environment.NewLine;
                     tipoAutoTexto += buscarTipo(tipoaut) + Environment.NewLine;
@@ -71,13 +84,13 @@ namespace Simlib
 
                     ComisionTotal = ComisionTotal + comision;
                 }
-
+                acum += ComisionTotal;
                 vector[3] = rndtipoAutoTexto.ToString();
                 vector[4] = tipoAutoTexto;
                 vector[5] = rndComisionTexto;
                 vector[6] = comisionTexto;
                 vector[7] = ComisionTotal.ToString();
-                vector[8] = string.IsNullOrEmpty(vector[8]) ? vector[7] : (double.Parse(vector[8]) + double.Parse(vector[7])).ToString();
+                vector[8] = acum.ToString();
                 //vector[9] = vendedor.ToString();
 
                 if (j >= mostrarDesde && j < mostrarHasta)
@@ -88,7 +101,8 @@ namespace Simlib
 
 
             //Promedio semanal de ventas del unico vendedor.
-            this.PromedioIndividual = double.Parse(vector[8]) / CantSemanas;//acumulado/cantsemanas
+            //this.PromedioIndividual = double.Parse(vector[8]) / CantSemanas;//acumulado/cantsemanas
+            this.PromedioIndividual = acum / CantSemanas;//acumulado/cantsemanas
 
 
 
@@ -100,25 +114,23 @@ namespace Simlib
             this.info = tabla;
         }
 
-        public double buscarcomision(int tipo, double rnd, Distribuciones<double> comisionAL, Distribuciones<double> comisionAM)
+        public RndValor<double> buscarcomision(int tipo/*, double rnd, Distribuciones<double> comisionAL, Distribuciones<double> comisionAM*/)
         {
             switch (tipo)
             {
 
                 case 1:
                     //Auto Compacto
-                    return 250;
+                    return new RndValor<double>(01, 250);
 
                 case 2:
                     //Auto Mediano
-                    return comisionAM.ObtenerValorAsociado(rnd);
-
+                    return this.DistribucionComAM.generar();
                 case 3:
                     //Auto De Lujo
-                    return comisionAL.ObtenerValorAsociado(rnd);
-
+                    return this.DistribucionComAL.generar();
                 default:
-                    return 0;
+                    return null;
 
             }
         }

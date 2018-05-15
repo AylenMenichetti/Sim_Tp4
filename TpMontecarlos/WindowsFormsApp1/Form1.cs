@@ -19,7 +19,7 @@ namespace AgenciaAutos
         Distribuciones<double> ComisionAM;
         Distribuciones<double> ComisionAL;
         Distribuciones<double> ComisionComp;
-        ManejadorSimulacion manejador;
+        
 
         public Form1()
         {
@@ -97,9 +97,8 @@ namespace AgenciaAutos
             //Crea Distribucion de Cantidad de Autos.
             this.generarDistribucionCantidad();
 
-
             //Crea Distribucion de Comisiones.
-            this.generarDistrivucionesTipos();
+            this.generarDistribucionesTipos();
 
             //Crea Distribucion de Tipo de Autos
             this.generarDistribucionTipoAuto();           
@@ -118,7 +117,7 @@ namespace AgenciaAutos
             }
             this.CantAutosVendidos = new Distribuciones<int>(ListaCantAutos);
         }
-        private void generarDistrivucionesTipos()
+        private void generarDistribucionesTipos()
         {
             List<Probabilidades<double>> ListaComisionAL = new List<Probabilidades<double>>();
             List<Probabilidades<double>> ListaComisionAM = new List<Probabilidades<double>>();
@@ -221,44 +220,6 @@ namespace AgenciaAutos
         }
 
        
-
-        private void VerificarProbComisionAutosMedianos(object sender, DataGridViewCellEventArgs e)
-        {
-            //MessageBox.Show("Hola VerificarProbComisionAutosMedianos Autos Medianos");
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblResultado_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblpromparcial_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filtrar(int vendedor) {
-
-
-            foreach (DataGridViewRow row in dgw_simulacion.Rows)
-            {
-                if (Convert.ToInt32(row.Cells[9].Value) != vendedor)
-                {
-
-                    CurrencyManager cm = (CurrencyManager)BindingContext[dgw_simulacion.DataSource];
-                    cm.SuspendBinding();
-                    row.Visible = false;
-                }
-
-
-
-            }
-        }
         
 
         private void sim_btn_fede_Click(object sender, EventArgs e)
@@ -274,12 +235,12 @@ namespace AgenciaAutos
 
 
             //Crea Distribucion de Comisiones.
-            this.generarDistrivucionesTipos();
+            this.generarDistribucionesTipos();
 
             //Crea Distribucion de Tipo de Autos
             this.generarDistribucionTipoAuto();
 
-            ManejadorAlt handler = new ManejadorAlt();
+            ManejadorAlt handler = new ManejadorAlt(this.CantAutosVendidos, this.ComisionAL, this.ComisionAM);
             handler.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM);
 
             dgw_simulacion.DataSource = handler.info;

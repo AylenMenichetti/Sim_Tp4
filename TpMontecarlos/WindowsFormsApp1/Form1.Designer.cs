@@ -163,6 +163,9 @@
             // 
             this.dgw_simulacion.AllowUserToAddRows = false;
             this.dgw_simulacion.AllowUserToDeleteRows = false;
+            this.dgw_simulacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgw_simulacion.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgw_simulacion.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgw_simulacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -182,6 +185,9 @@
             // 
             // TcRSimulacion
             // 
+            this.TcRSimulacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TcRSimulacion.Controls.Add(this.TpParametros);
             this.TcRSimulacion.Controls.Add(this.TpRSimulacion);
             this.TcRSimulacion.Location = new System.Drawing.Point(16, 10);
@@ -286,7 +292,6 @@
             this.dgwcomisionAM.RowTemplate.Height = 24;
             this.dgwcomisionAM.Size = new System.Drawing.Size(263, 122);
             this.dgwcomisionAM.TabIndex = 2;
-            this.dgwcomisionAM.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.VerificarProbComisionAutosMedianos);
             // 
             // comisionM
             // 
@@ -477,7 +482,6 @@
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Conclusiones";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lblpromparcial
             // 
@@ -487,7 +491,6 @@
             this.lblpromparcial.Size = new System.Drawing.Size(40, 13);
             this.lblpromparcial.TabIndex = 1;
             this.lblpromparcial.Text = "           ";
-            this.lblpromparcial.Click += new System.EventHandler(this.lblpromparcial_Click);
             // 
             // lblResultado
             // 
@@ -497,7 +500,6 @@
             this.lblResultado.Size = new System.Drawing.Size(40, 13);
             this.lblResultado.TabIndex = 0;
             this.lblResultado.Text = "           ";
-            this.lblResultado.Click += new System.EventHandler(this.lblResultado_Click);
             // 
             // Form1
             // 

@@ -23,7 +23,7 @@ namespace Simlib.Tabla_Probabilidades
 
         
         //genera rnd
-        public double GenerarRnd(/*Random rnd*/)
+        public double GenerarRnd()
         {
             var num = this.random.NextDouble();
             num=Math.Truncate(num*100);

@@ -127,7 +127,7 @@ namespace Simlib
                 vector[34] = acum_total.ToString();
 
                 //Agregar a la tabla a mostrar;
-                if (semana >= mostrarDesde && semana <= mostrarHasta)
+                if (semana >= mostrarDesde && semana < mostrarHasta)
                     tabla.LoadDataRow(vector, true);
             }
 
