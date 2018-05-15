@@ -90,7 +90,7 @@ namespace AgenciaAutos
         {
             if (!validar())
             {
-                MessageBox.Show("Los numeros no cierran");
+                MessageBox.Show("La Suma de las probabilidades porcentuales debe ser igual a 100");
                 return;
             }
 
@@ -102,22 +102,9 @@ namespace AgenciaAutos
             this.generarDistrivucionesTipos();
 
             //Crea Distribucion de Tipo de Autos
-            this.generarDistribucionTipoAuto();
-            
-
-            /*this.generarProbabilidades(dgwcantautos, ListaCantAutos);
-            this.generarProbabilidades(dgwTipoAuto, ListatiposAutos);
-            this.generarProbabilidades(dgwcomisionAL, ListaComisionAL);
-            this.generarProbabilidades(dgwcomisionAM, ListaComisionAM);
-
-            CantAutosVendidos = new Distribuciones(ListaCantAutos);
-            TipoAuto = new Distribuciones(ListaTiposAutos);
-            ComisionAM = new Distribuciones(ListaComisionAM);*/
-
+            this.generarDistribucionTipoAuto();           
 
             Simular();
-            //dgw_simulacion.Columns[9].Visible = false;
-
         }
 
         private void generarDistribucionCantidad()
@@ -211,9 +198,6 @@ namespace AgenciaAutos
 
         private void Simular()
         {
-            double promtotal = 0;
-            string textpromparc = "";
-
             ManejadorSimulacion manejador = new ManejadorSimulacion(this.CantAutosVendidos, this.TipoAuto);
 
             /*dgw_simulacion.DataSource = */
@@ -222,15 +206,11 @@ namespace AgenciaAutos
                 int.Parse(txt_cantMostrar.Text), 
                 int.Parse(txt_mostrarDesde.Text));
             dgw_simulacion.DataSource = manejador.Info;
-
-
-            /*dgw_simulacion.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.Columns[4].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.Columns[5].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.Columns[6].DefaultCellStyle.WrapMode = DataGridViewTriState.True;*/
+            
             dgw_simulacion.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             
-            lblResultado.Text = "Comisión promedio de los vendedores en una semana (total): " + manejador.Promedio_Total;
+            lblResultado.Text = $"Promedio de Comision de Vendedores: {manejador.Promedio_Vendedores.ToString("C")}" +
+                "\nComisión promedio de los vendedores en una semana (total): " + manejador.Promedio_Total;
             lblpromparcial.Text = $"Promedio Vendedor 1: {manejador.Promedio_V1}\n" +
                 $"Promedio Vendedor 2: {manejador.Promedio_V2}\n" + 
                 $"Promedio Vendedor 3: {manejador.Promedio_V3}\n" +
@@ -279,97 +259,34 @@ namespace AgenciaAutos
 
             }
         }
-
-
-
-
-        //DataTable dt = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM, ref promtotal, ref textpromparc);
-        //dgw_simulacion.DataSource = dt;
-        //DataView view = dt.DefaultView;
-        //view.RowFilter = "";
-        //dgw_simulacion.DataSource = view;
-
-
-
-
-        private void traertodos()
-        {
-            foreach (DataGridViewRow row in dgw_simulacion.Rows)
-            {        
-                    row.Visible = true;
-            
-            }
-        }
-
-
-
-
-        private void rad_v1_CheckedChanged(object sender, EventArgs e)
-        {
-            traertodos();
-            filtrar(1);
-        }
-
-        private void rad_VerTodos_CheckedChanged(object sender, EventArgs e)
-        {
-            traertodos();
-
-
-        }
-
-        private void rad_v2_CheckedChanged(object sender, EventArgs e)
-        {
-            traertodos();
-            filtrar(2);
-        }
-
-        private void rad_v3_CheckedChanged(object sender, EventArgs e)
-        {
-            traertodos();
-            filtrar(3);
-        }
-
-        private void rad_v4_CheckedChanged(object sender, EventArgs e)
-        {
-            traertodos();
-            filtrar(4);
-        }
+        
 
         private void sim_btn_fede_Click(object sender, EventArgs e)
         {
             if (!validar())
             {
-                MessageBox.Show("Los numeros no cierran");
+                MessageBox.Show("La Suma de las probabilidades porcentuales debe ser igual a 100");
                 return;
             }
-            /*List<Probabilidades> ListaCantAutos = new List<Probabilidades>();
-            List<Probabilidades> ListatiposAutos = new List<Probabilidades>();
-            List<Probabilidades> ListaComisionAL = new List<Probabilidades>();
-            List<Probabilidades> ListaComisionAM = new List<Probabilidades>();
 
-            this.generarProbabilidades(dgwcantautos, ListaCantAutos);
-            this.generarProbabilidades(dgwTipoAuto, ListatiposAutos);
-            this.generarProbabilidades(dgwcomisionAL, ListaComisionAL);
-            this.generarProbabilidades(dgwcomisionAM, ListaComisionAM);
+            //Crea Distribucion de Cantidad de Autos.
+            this.generarDistribucionCantidad();
 
-            CantAutosVendidos = new Distribuciones(ListaCantAutos);
-            TipoAuto = new Distribuciones(ListatiposAutos);
-            ComisionAL = new Distribuciones(ListaComisionAL);
-            ComisionAM = new Distribuciones(ListaComisionAM);
+
+            //Crea Distribucion de Comisiones.
+            this.generarDistrivucionesTipos();
+
+            //Crea Distribucion de Tipo de Autos
+            this.generarDistribucionTipoAuto();
 
             ManejadorAlt handler = new ManejadorAlt();
             handler.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM);
 
             dgw_simulacion.DataSource = handler.info;
-            dgw_simulacion.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.Columns[4].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.Columns[5].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.Columns[6].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            //MessageBox.Show($@"Promedio: ${handler.Promedio}");
+            
             lblpromparcial.Text = $"Promedio Individual: {handler.PromedioIndividual.ToString("C")}";
             lblResultado.Text = $"Promedio Grupal: {handler.PromedioGrupal.ToString("C")}";
-            TcRSimulacion.SelectTab(TpRSimulacion);*/
+            TcRSimulacion.SelectTab(TpRSimulacion);
 
         }
     }
