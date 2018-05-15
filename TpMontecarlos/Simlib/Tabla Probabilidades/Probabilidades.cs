@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Simlib.Tabla_Probabilidades
 {
-    public class Probabilidades
+    public class Probabilidades <T>
     {
-        public int ValorAsociado { get; set; }
+        public T ValorAsociado { get; set; }
         public double ProbabilidadAsociada { get; set; }
 
-        public Probabilidades(int Valor, double probabilidad)
+        public Probabilidades(T Valor, double probabilidad)
         { 
             ValorAsociado = Valor;
             ProbabilidadAsociada = probabilidad;

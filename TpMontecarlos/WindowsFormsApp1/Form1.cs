@@ -19,11 +19,12 @@ namespace AgenciaAutos
 {
     public partial class Form1 : Form
     {
-        Distribuciones CantAutosVendidos;
-        Distribuciones TipoAuto;
-        Distribuciones ComisionAM;
-        Distribuciones ComisionAL;
-        ManejadorSimulacion manejador = new ManejadorSimulacion();
+        Distribuciones<int> CantAutosVendidos;
+        Distribuciones<TipoAuto> TipoAuto;
+        Distribuciones<double> ComisionAM;
+        Distribuciones<double> ComisionAL;
+        Distribuciones<double> ComisionComp;
+        ManejadorSimulacion manejador;
 
         public Form1()
         {
@@ -97,47 +98,75 @@ namespace AgenciaAutos
                 MessageBox.Show("Los numeros no cierran");
                 return;
             }
-            List<Probabilidades> ListaCantAutos = new List<Probabilidades>();
-            List<Probabilidades> ListatiposAutos = new List<Probabilidades>();
-            List<Probabilidades> ListaComisionAL = new List<Probabilidades>();
-            List<Probabilidades> ListaComisionAM = new List<Probabilidades>();
+            
+            //Crea Distribucion de Cantidad de Autos.
+            List<Probabilidades<int>> ListaCantAutos = new List<Probabilidades<int>>();
+            foreach (DataGridViewRow r in dgwcantautos.Rows)
+            {
+                var valor = r.Cells[0].Value;
+                var probabilidad = r.Cells[1].Value;
+                ListaCantAutos.Add(new Probabilidades<int>(Convert.ToInt32(valor), Convert.ToDouble(probabilidad)));
+            }
 
-            this.generarProbabilidades(dgwcantautos, ListaCantAutos);
+            //Crea Distribucion de Comisiones.
+            List<Probabilidades<double>> ListaComisionAL = new List<Probabilidades<double>>();
+            List<Probabilidades<double>> ListaComisionAM = new List<Probabilidades<double>>();
+            List<Probabilidades<double>> ListaComisionComp = new List<Probabilidades<double>>();
+            foreach(DataGridViewRow r in dgwcomisionAL.Rows)
+            {
+                var valor = r.Cells[0].Value;
+                var probabilidad = r.Cells[1].Value;
+                ListaComisionAL.Add(new Probabilidades<double>(Convert.ToDouble(valor), Convert.ToDouble(probabilidad)));
+            }
+            this.ComisionAL = new Distribuciones<double>(ListaComisionAL);
+            foreach(DataGridViewRow r in dgwcomisionAM.Rows)
+            {
+                var valor = r.Cells[0].Value;
+                var probabilidad = r.Cells[1].Value;
+                ListaComisionAM.Add(new Probabilidades<double>(Convert.ToDouble(valor), Convert.ToDouble(probabilidad)));
+            }
+            this.ComisionAM = new Distribuciones<double>(ListaComisionAM);
+
+            var comison_comp = txtComisionAC.Text;
+            ListaComisionComp.Add(new Probabilidades<double>(Convert.ToDouble(comison_comp), 100));
+            this.ComisionComp = new Distribuciones<double>(ListaComisionComp);
+
+            //Crea Distribucion de Tipo de Autos
+            List<Probabilidades<TipoAuto>> ListaTiposAutos = new List<Probabilidades<TipoAuto>>();
+            Probabilidades<TipoAuto> p;
+            foreach (DataGridViewRow r in dgwTipoAuto.Rows)
+            {
+                var nombre = r.Cells["Tipo Auto"].Value.ToString();
+                var prob = r.Cells["Probabilidad"].Value;
+                var tipo = new TipoAuto();
+                tipo.Nombre = nombre;
+                if (nombre == "Compacto(C)")
+                    tipo.DistribucionComision = ComisionComp;
+                else if (nombre == "Auto Mediano (AM)")
+                    tipo.DistribucionComision = ComisionAM;
+                else
+                    tipo.DistribucionComision = ComisionAL;
+                        
+                p = new Probabilidades<TipoAuto>(tipo, Convert.ToDouble(prob));
+                ListaTiposAutos.Add(p);
+            }
+            TipoAuto = new Distribuciones<TipoAuto>(ListaTiposAutos);
+
+            /*this.generarProbabilidades(dgwcantautos, ListaCantAutos);
             this.generarProbabilidades(dgwTipoAuto, ListatiposAutos);
             this.generarProbabilidades(dgwcomisionAL, ListaComisionAL);
             this.generarProbabilidades(dgwcomisionAM, ListaComisionAM);
 
             CantAutosVendidos = new Distribuciones(ListaCantAutos);
-            TipoAuto = new Distribuciones(ListatiposAutos);
-            ComisionAL = new Distribuciones(ListaComisionAL);
-            ComisionAM = new Distribuciones(ListaComisionAM);
+            TipoAuto = new Distribuciones(ListaTiposAutos);
+            ComisionAM = new Distribuciones(ListaComisionAM);*/
 
 
             Simular();
             //dgw_simulacion.Columns[9].Visible = false;
 
         }
-
-
-        private void Simular()
-        {
-            double promtotal = 0;
-            string textpromparc = "";
-            dgw_simulacion.DataSource = manejador.Simular(int.Parse(txt_cantSemanas.Text), int.Parse(txt_cantMostrar.Text), int.Parse(txt_mostrarDesde.Text), CantAutosVendidos, TipoAuto, ComisionAL, ComisionAM, ref promtotal, ref textpromparc);
-            dgw_simulacion.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.Columns[4].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.Columns[5].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.Columns[6].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            
-            lblResultado.Text = "Comisión promedio de los vendedores en una semana: " + promtotal.ToString();
-            lblpromparcial.Text = textpromparc;
-            TcRSimulacion.SelectTab(TpRSimulacion);
-
-         
-        }
-
-        private List<Probabilidades> generarProbabilidades(DataGridView dt, List<Probabilidades> probabilidades)
+        /*private List<Probabilidades> generarProbabilidades(DataGridView dt, List<Probabilidades> probabilidades)
         {
             Probabilidades pr;
             var nombre = dt.Name;
@@ -156,7 +185,38 @@ namespace AgenciaAutos
             }
 
             return probabilidades;
+        }*/
+
+
+        private void Simular()
+        {
+            double promtotal = 0;
+            string textpromparc = "";
+            dgw_simulacion.DataSource = manejador.Simular(
+                int.Parse(txt_cantSemanas.Text), 
+                int.Parse(txt_cantMostrar.Text), 
+                int.Parse(txt_mostrarDesde.Text), 
+                /*CantAutosVendidos, 
+                TipoAuto, ComisionAL, 
+                ComisionAM, */
+                ref promtotal, 
+                ref textpromparc);
+
+
+            dgw_simulacion.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.Columns[4].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.Columns[5].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.Columns[6].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            
+            lblResultado.Text = "Comisión promedio de los vendedores en una semana: " + promtotal.ToString();
+            lblpromparcial.Text = textpromparc;
+            TcRSimulacion.SelectTab(TpRSimulacion);
+
+         
         }
+
+       
 
         private void VerificarProbComisionAutosMedianos(object sender, DataGridViewCellEventArgs e)
         {

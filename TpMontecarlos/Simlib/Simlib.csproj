@@ -47,8 +47,10 @@
     <Compile Include="ManejadorSimulacion.cs" />
     <Compile Include="Promedio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RndValor.cs" />
     <Compile Include="Tabla Probabilidades\Distribuciones.cs" />
     <Compile Include="Tabla Probabilidades\Probabilidades.cs" />
+    <Compile Include="TipoAuto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

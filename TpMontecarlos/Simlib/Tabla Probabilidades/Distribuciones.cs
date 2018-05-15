@@ -5,27 +5,33 @@ using System.Threading;
 
 namespace Simlib.Tabla_Probabilidades
 {
-    public class Distribuciones
+    public class Distribuciones <T>
     {
-        public List<Probabilidades> Valores { get; set; }
+        public List<Probabilidades<T>> Valores { get; set; }
         public List<double> intervaloHasta { get; set; }
 
-        public Distribuciones(List<Probabilidades> Valores)
+        //Cada Distribucion tiene su cadena de randoms.
+        private Random random;
+
+        public Distribuciones(List<Probabilidades<T>> Valores)
         {
-            this.Valores = Valores ?? new List<Probabilidades>();
+            this.random = new Random();
+            this.Valores = Valores ?? new List<Probabilidades<T>>();
 
             GenerarTabla();
         }
+
+        
         //genera rnd
-        public double GenerarRnd(Random rnd)
+        public double GenerarRnd(/*Random rnd*/)
         {
-            var random = rnd.NextDouble();
-            random=Math.Truncate(random*100);
-            return random;
+            var num = this.random.NextDouble();
+            num=Math.Truncate(num*100);
+            return num;
         }
 
         //apartir del rnd, devuelve el valor asociado
-        public double ObtenerValorAsociado(double rnd)
+        public T ObtenerValorAsociado(double rnd)
         {
             
             for (var i = 1; i < intervaloHasta.Count; i++)

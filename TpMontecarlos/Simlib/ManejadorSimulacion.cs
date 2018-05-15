@@ -10,11 +10,19 @@ namespace Simlib
     public class ManejadorSimulacion
     {
 
-        public ManejadorSimulacion()
+        private Distribuciones<int> DistCantAutos;
+        private Distribuciones<TipoAuto> DistTiposAuto;
+        /*private Distribuciones DistComisionesLujo;
+        private Distribuciones DistComisionesMediano;*/
+
+        
+        public ManejadorSimulacion(Distribuciones<int> CantidadAutos, Distribuciones<TipoAuto> TipoAuto)
         {
+            this.DistCantAutos = CantidadAutos;
+            this.DistTiposAuto = TipoAuto;
         }
 
-        public DataTable Simular(int CantSemanas, int filasMostrar, int mostrarDesde, Distribuciones cantautos, Distribuciones tipoAuto, Distribuciones ComisionesAL, Distribuciones ComisionesAM, ref double promtotal, ref string textpromparcial)
+        public DataTable Simular(int CantSemanas, int filasMostrar, int mostrarDesde, ref double promtotal, ref string textpromparcial)
         {
             DataTable tabla = new DataTable(); //Tabla que será devuelta
             tabla.Columns.Add("Semana Numero:");
@@ -29,7 +37,7 @@ namespace Simlib
             tabla.Columns.Add("Vendedor");
 
             var mostrarHasta = mostrarDesde + filasMostrar;
-            Random r = new Random();
+            //Random r = new Random();
             double acumtotalvendedor = 0;
             double acum = 0;
             textpromparcial += "Promedio por Semana:\n";
@@ -47,9 +55,8 @@ namespace Simlib
                     //        Campos en común------------------------------ -
                     vector[0] = j.ToString();
 
-                    double rndCantAuto = cantautos.GenerarRnd(r);
-                    vector[1] = rndCantAuto.ToString();
-                    vector[2] = cantautos.ObtenerValorAsociado(rndCantAuto).ToString();
+                    //vector[1] = rndCantAuto.ToString();
+                    //vector[2] = cantautos.ObtenerValorAsociado(rndCantAuto).ToString();
                     String rndComisionTexto = "";
                     String rndtipoAutoTexto = "";
                     String tipoAutoTexto = "";
@@ -58,7 +65,7 @@ namespace Simlib
                     //Iteraciones por autos (Demanda)
                     for (int k = 0; k < int.Parse(vector[2]); k++)
                     {
-                        double rndtipoAuto = tipoAuto.GenerarRnd(r);
+                        double rndtipoAuto = tipoAuto.GenerarRnd();
                         int tipoaut = (int)tipoAuto.ObtenerValorAsociado(rndtipoAuto);
                         
                         double rndcomision = Math.Truncate(r.NextDouble() * 100);
@@ -97,6 +104,21 @@ namespace Simlib
             }
             promtotal = acum / 4;
             return tabla;
+        }
+
+        private String[] SubVectorVendedor()
+        {
+            String[] subVector = new String[7];
+            //Cantidad Auto (Rnd + Nro) - Tipo Autos (Rnd + nro) - Comisiones (Rnd + Nros) - Comision Total Ven
+
+            double rndCantAutos = this.DistCantAutos.GenerarRnd();
+            int nroCantAutos =this.DistCantAutos
+
+            double rndTipoAuto = tipoAuto.GenerarRnd();
+            int nroTipoAuto = (int)tipoAuto.ObtenerValorAsociado(rndtipoAuto);
+
+
+            return subVector;
         }
 
         public double buscarcomision(int tipo, double rnd, Distribuciones comisionAL, Distribuciones comisionAM)
