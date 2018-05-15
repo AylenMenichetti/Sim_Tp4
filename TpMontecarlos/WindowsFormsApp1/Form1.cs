@@ -216,25 +216,25 @@ namespace AgenciaAutos
 
             ManejadorSimulacion manejador = new ManejadorSimulacion(this.CantAutosVendidos, this.TipoAuto);
 
-            dgw_simulacion.DataSource = manejador.Simular(
+            /*dgw_simulacion.DataSource = */
+            manejador.Simular(
                 int.Parse(txt_cantSemanas.Text), 
                 int.Parse(txt_cantMostrar.Text), 
-                int.Parse(txt_mostrarDesde.Text), 
-                /*CantAutosVendidos, 
-                TipoAuto, ComisionAL, 
-                ComisionAM, */
-                ref promtotal, 
-                ref textpromparc);
+                int.Parse(txt_mostrarDesde.Text));
+            dgw_simulacion.DataSource = manejador.Info;
 
 
-            dgw_simulacion.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            /*dgw_simulacion.Columns[3].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgw_simulacion.Columns[4].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgw_simulacion.Columns[5].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgw_simulacion.Columns[6].DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgw_simulacion.Columns[6].DefaultCellStyle.WrapMode = DataGridViewTriState.True;*/
             dgw_simulacion.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             
-            lblResultado.Text = "Comisión promedio de los vendedores en una semana: " + promtotal.ToString();
-            lblpromparcial.Text = textpromparc;
+            lblResultado.Text = "Comisión promedio de los vendedores en una semana (total): " + manejador.Promedio_Total;
+            lblpromparcial.Text = $"Promedio Vendedor 1: {manejador.Promedio_V1}\n" +
+                $"Promedio Vendedor 2: {manejador.Promedio_V2}\n" + 
+                $"Promedio Vendedor 3: {manejador.Promedio_V3}\n" +
+                $"Promedio Vendedor 4: {manejador.Promedio_V4}";
             TcRSimulacion.SelectTab(TpRSimulacion);
 
          

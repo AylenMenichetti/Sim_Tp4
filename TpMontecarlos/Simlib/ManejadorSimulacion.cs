@@ -12,34 +12,79 @@ namespace Simlib
 
         private Distribuciones<int> DistCantAutos;
         private Distribuciones<TipoAuto> DistTiposAuto;
+
+        public DataTable Info { get; protected set; }
+        public double Promedio_V1 { get; protected set; }
+        public double Promedio_V2{ get; protected set; }
+        public double Promedio_V3{ get; protected set; }
+        public double Promedio_V4{ get; protected set; }
+        public double Promedio_Total { get; protected set; }
+
         /*private Distribuciones DistComisionesLujo;
         private Distribuciones DistComisionesMediano;*/
 
-        
+
         public ManejadorSimulacion(Distribuciones<int> CantidadAutos, Distribuciones<TipoAuto> TipoAuto)
         {
             this.DistCantAutos = CantidadAutos;
             this.DistTiposAuto = TipoAuto;
         }
 
-        public DataTable Simular(int CantSemanas, int filasMostrar, int mostrarDesde, ref double promtotal, ref string textpromparcial)
+        public void Simular(int CantSemanas, int filasMostrar, int mostrarDesde)
         {
             DataTable tabla = new DataTable(); //Tabla que será devuelta
+
             tabla.Columns.Add("Semana Numero:");
-            tabla.Columns.Add("RND Cant Autos");
-            tabla.Columns.Add("Cantidad Autos");
-            tabla.Columns.Add("RND Tipo Auto");
-            tabla.Columns.Add("Tipo Auto");
-            tabla.Columns.Add("RND Comision");
-            tabla.Columns.Add("Comision");
+
+            tabla.Columns.Add("(v1) RND Cant Autos");
+            tabla.Columns.Add("(v1) Cantidad Autos");
+            tabla.Columns.Add("(v1) RND Tipo Auto");
+            tabla.Columns.Add("(v1) Tipo Auto");
+            tabla.Columns.Add("(v1) RND Comision");
+            tabla.Columns.Add("(v1) Comision");
+            tabla.Columns.Add("(v1) Comision Total");
+            tabla.Columns.Add("(v1) Comision Acumulada");
+
+            tabla.Columns.Add("(v2) RND Cant Autos");
+            tabla.Columns.Add("(v2) Cantidad Autos");
+            tabla.Columns.Add("(v2) RND Tipo Auto");
+            tabla.Columns.Add("(v2) Tipo Auto");
+            tabla.Columns.Add("(v2) RND Comision");
+            tabla.Columns.Add("(v2) Comision");
+            tabla.Columns.Add("(v2) Comision Total");
+            tabla.Columns.Add("(v2) Comision Acumulada");
+
+            tabla.Columns.Add("(v3) RND Cant Autos");
+            tabla.Columns.Add("(v3) Cantidad Autos");
+            tabla.Columns.Add("(v3) RND Tipo Auto");
+            tabla.Columns.Add("(v3) Tipo Auto");
+            tabla.Columns.Add("(v3) RND Comision");
+            tabla.Columns.Add("(v3) Comision");
+            tabla.Columns.Add("(v3) Comision Total");
+            tabla.Columns.Add("(v3) Comision Acumulada");
+
+            tabla.Columns.Add("(v4) RND Cant Autos");
+            tabla.Columns.Add("(v4) Cantidad Autos");
+            tabla.Columns.Add("(v4) RND Tipo Auto");
+            tabla.Columns.Add("(v4) Tipo Auto");
+            tabla.Columns.Add("(v4) RND Comision");
+            tabla.Columns.Add("(v4) Comision");
+            tabla.Columns.Add("(v4) Comision Total");
+            tabla.Columns.Add("(v4) Comision Acumulada");
+
             tabla.Columns.Add("Comision Total");
             tabla.Columns.Add("Comision Acumulada");
-            tabla.Columns.Add("Vendedor");
+            
 
             var mostrarHasta = mostrarDesde + filasMostrar;
 
-            string[] vector = new string[35];
+            string[] vector = new string[34];
 
+            double acum_v1 = 0;
+            double acum_v2 = 0;
+            double acum_v3 = 0;
+            double acum_v4 = 0;
+            double acum_total = 0;
             for (int semana = 1; semana <= CantSemanas; semana++)
             {
                 vector[0] = semana.ToString();
@@ -49,26 +94,56 @@ namespace Simlib
                 var ven3 = SubVectorVendedor();
                 var ven4 = SubVectorVendedor();
 
+                acum_v1 += Convert.ToDouble(ven1[6]);
+                acum_v2 += Convert.ToDouble(ven2[6]);
+                acum_v3 += Convert.ToDouble(ven3[6]);
+                acum_v4 += Convert.ToDouble(ven4[6]);
+
+                double total = Convert.ToDouble(ven1[6]) + 
+                    Convert.ToDouble(ven2[6]) + 
+                    Convert.ToDouble(ven3[6]) + 
+                    Convert.ToDouble(ven4[6]);
+
+                acum_total += total;
+
                 // del 1 al 7
                 agregarSubVendedor(ref vector, ref ven1, 1);
-                vector[8] = "acum v1";
+                vector[8] = acum_v1.ToString();
                 
                 //del 9 al 15
-                agregarSubVendedor(ref vector, ref ven2, 15);
-                vector[16] = "acum v2";
+                agregarSubVendedor(ref vector, ref ven2, 9);
+                vector[16] = acum_v2.ToString();
 
                 //del 17 al 23
                 agregarSubVendedor(ref vector, ref ven3, 17);
-                vector[24] = "acum v3";
+                vector[24] = acum_v3.ToString();
 
                 //del 25 al 31
                 agregarSubVendedor(ref vector, ref ven4, 25);
-                vector[31] = "acum v4";
+                vector[31] = acum_v4.ToString();
 
-                vector[32] = "total_comisiones";
-                vector[33] = "acum total_comisiones";
+                vector[32] = total.ToString();
+                vector[33] = acum_total.ToString();
 
+                //Agregar a la tabla a mostrar;
+                if (semana >= mostrarDesde && semana <= mostrarHasta)
+                    tabla.LoadDataRow(vector, true);
             }
+
+            //Agregar Fila final
+            tabla.LoadDataRow(vector, true);
+
+            //logica final
+            Promedio_V1 = acum_v1 / CantSemanas;
+            Promedio_V2 = acum_v2 / CantSemanas;
+            Promedio_V3 = acum_v3 / CantSemanas;
+            Promedio_V4 = acum_v4 / CantSemanas;
+            Promedio_Total = acum_total / CantSemanas;
+
+            //Setear Tabla
+            this.Info = tabla;
+
+
             //Random r = new Random();
             /*double acumtotalvendedor = 0;
             double acum = 0;
@@ -135,7 +210,7 @@ namespace Simlib
                 acum += promparcial;
             }
             promtotal = acum / 4;*/
-            return tabla;
+            //return tabla;
         }
 
         private String[] SubVectorVendedor()
